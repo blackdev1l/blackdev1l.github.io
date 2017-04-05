@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Cristian&#39;s blog</title>
-    <link>https://blackdev1l.com/post/index.xml</link>
+    <link>https://blackdev1l.github.io/post/index.xml</link>
     <description>Recent content in Posts on Cristian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Fri, 29 Jan 2016 17:37:47 +0000</lastBuildDate>
-    <atom:link href="https://blackdev1l.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blackdev1l.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Pretty Good Privacy</title>
-      <link>https://blackdev1l.com/post/pretty-good-privacy/</link>
+      <link>https://blackdev1l.github.io/post/pretty-good-privacy/</link>
       <pubDate>Fri, 29 Jan 2016 17:37:47 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/pretty-good-privacy/</guid>
+      <guid>https://blackdev1l.github.io/post/pretty-good-privacy/</guid>
       <description>
 
 &lt;p&gt;Pretty Good Privacy (da ora &lt;strong&gt;PGP&lt;/strong&gt;) è un programma e standard crittografico basato su crittografia asimettrica&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:n&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:n&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;; è uno dei sistemi crittografici più usati in informatica.
@@ -100,7 +100,7 @@ Ora il programma vi chiederà di fare altro, scrivere sulla tastiera o muovere i
 &lt;ul&gt;
 &lt;li&gt;esportare chiave pubblica:
 &lt;code&gt;gpg --export -a &amp;quot;user name&amp;quot; &amp;gt; pub.asc&lt;/code&gt;&lt;br /&gt;
-nota: -a imposta l&amp;rsquo;esportazione della chiave in ascii armor, utile per poter inviare la chiave pubblica in &lt;a href=&#34;https://blackdev1l.com/pgp.txt&#34;&gt;formato testuale&lt;/a&gt;.&lt;br /&gt;&lt;/li&gt;
+nota: -a imposta l&amp;rsquo;esportazione della chiave in ascii armor, utile per poter inviare la chiave pubblica in &lt;a href=&#34;https://blackdev1l.github.io/pgp.txt&#34;&gt;formato testuale&lt;/a&gt;.&lt;br /&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;esportare chiave privata:
 &lt;code&gt;gpg --export-secret-key -a &amp;quot;User Name&amp;quot; &amp;gt; private.asc&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
@@ -183,10 +183,10 @@ Probabilmente il più utilizzato sia su windows che su linux è &lt;a href=&#34;
     
     <item>
       <title>Resoconto primo quadrimestre 2015</title>
-      <link>https://blackdev1l.com/post/resoconto-primo-quadrimestre-2015/</link>
+      <link>https://blackdev1l.github.io/post/resoconto-primo-quadrimestre-2015/</link>
       <pubDate>Sat, 23 May 2015 19:34:54 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/resoconto-primo-quadrimestre-2015/</guid>
+      <guid>https://blackdev1l.github.io/post/resoconto-primo-quadrimestre-2015/</guid>
       <description>&lt;p&gt;Buonasera!
 Scrivo questo post in estremo ritardo, mi ero ripromesso di scrivere almeno un post a settimana, ma la vita si è messa in mezzo, quindi ho dovuto ritardare fino ad oggi. Colgo l&amp;rsquo;opportunità di questo Giovedì pomeriggio (siamo ormai al weekend, right?) per aggiornare questo blog, con una veste rinnovata, e tante cose belle da annunciare!&lt;/p&gt;
 
@@ -219,10 +219,10 @@ Non è facile, sopratutto lavorando, quindi, avendo un orario da ufficio da risp
     
     <item>
       <title>Torrent-box with Raspberry Pi</title>
-      <link>https://blackdev1l.com/post/torrent-box-with-raspberrypi/</link>
+      <link>https://blackdev1l.github.io/post/torrent-box-with-raspberrypi/</link>
       <pubDate>Sun, 08 Mar 2015 15:53:51 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/torrent-box-with-raspberrypi/</guid>
+      <guid>https://blackdev1l.github.io/post/torrent-box-with-raspberrypi/</guid>
       <description>&lt;p&gt;Hello folks! Today english post (my first one) , we are going to build a simple torrent-box with the raspberry pi, an old hard drive and a little bit of  GNU/Linux magic!&lt;/p&gt;
 
 &lt;p&gt;##Boot up and update raspbian&lt;/p&gt;
@@ -376,10 +376,10 @@ save and close.&lt;/p&gt;
     
     <item>
       <title>Go Crawler</title>
-      <link>https://blackdev1l.com/post/go-crawler/</link>
+      <link>https://blackdev1l.github.io/post/go-crawler/</link>
       <pubDate>Mon, 09 Feb 2015 02:17:51 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/go-crawler/</guid>
+      <guid>https://blackdev1l.github.io/post/go-crawler/</guid>
       <description>
 
 &lt;p&gt;Iniziamo l&amp;rsquo;anno con un progettino semplice semplice per impratichirsi con
@@ -559,10 +559,10 @@ il tag &lt;code&gt;-&lt;/code&gt; invece, omette ogni caso dal marshal quella va
     
     <item>
       <title>Rails Rumble</title>
-      <link>https://blackdev1l.com/post/rails-rumble/</link>
+      <link>https://blackdev1l.github.io/post/rails-rumble/</link>
       <pubDate>Sun, 02 Nov 2014 22:15:08 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/rails-rumble/</guid>
+      <guid>https://blackdev1l.github.io/post/rails-rumble/</guid>
       <description>&lt;p&gt;Salve a tutti, qualche settimana fa ho partecipato all&amp;rsquo;edizione di quest&amp;rsquo;anno della &lt;a href=&#34;http://railsrumble.com/&#34;&gt;Rails Rumble&lt;/a&gt; , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&amp;rsquo;inizio.&lt;/p&gt;
 
 &lt;p&gt;##Cos&amp;rsquo;è:&lt;/p&gt;
@@ -762,10 +762,10 @@ Se vi ho incuriosito un pochino, vi lascio il link al sito che abbiamo creato in
     
     <item>
       <title>Basi di dati parte 1: proprietà</title>
-      <link>https://blackdev1l.com/post/basi-di-dati-parte-1-b-1234567/</link>
+      <link>https://blackdev1l.github.io/post/basi-di-dati-parte-1-b-1234567/</link>
       <pubDate>Thu, 23 Oct 2014 16:58:38 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/basi-di-dati-parte-1-b-1234567/</guid>
+      <guid>https://blackdev1l.github.io/post/basi-di-dati-parte-1-b-1234567/</guid>
       <description>&lt;p&gt;###Nozioni&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Istanza di entità:&lt;/strong&gt; Cosa o persona che esiste, della quale vogliamo registrare  gli attributi e che puo&amp;rsquo; essere chiaramente indentificata in modo da poterla distringuere dalle altre.&lt;br /&gt;
@@ -791,7 +791,7 @@ entità e le caratteristiche delle istanze di associazione.&lt;br /&gt;
 
 &lt;p&gt;&lt;strong&gt;Simbolo grafico per rappresentare un&amp;rsquo;associazione&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/Untitled-drawing--1-.png&#34; alt=&#34;Modello Associazione&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/Untitled-drawing--1-.png&#34; alt=&#34;Modello Associazione&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -799,15 +799,15 @@ entità e le caratteristiche delle istanze di associazione.&lt;br /&gt;
 
 &lt;ul&gt;
 &lt;li&gt;scalare (ad un solo valore)
-&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/propiert-.png&#34; alt=&#34;scalare&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/propiert-.png&#34; alt=&#34;scalare&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;Multipla (sono ammessi &lt;em&gt;n&lt;/em&gt; valori)
-&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/multiple.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/multiple.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;Composta
-&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/multiple--2--1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/multiple--2--1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;Multipla composta
-&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/multiplecomposta.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/multiplecomposta.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;Opzionale
-&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/optional.png&#34; alt=&#34;&#34; /&gt; Alternativa alla proprietà opzionale è quella &lt;strong&gt;Totale&lt;/strong&gt;, per la quale bisognerà specificare separatamente dello schema l&amp;rsquo;obbligatorietà della presenza di valore.&lt;/li&gt;
+&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/optional.png&#34; alt=&#34;&#34; /&gt; Alternativa alla proprietà opzionale è quella &lt;strong&gt;Totale&lt;/strong&gt;, per la quale bisognerà specificare separatamente dello schema l&amp;rsquo;obbligatorietà della presenza di valore.&lt;/li&gt;
 &lt;li&gt;Costante&lt;br /&gt;
 I valori non possono essere cambiati, in alternativa la properietà è &lt;strong&gt;modificabile&lt;/strong&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;calcolata&lt;br /&gt;
@@ -823,7 +823,7 @@ il valore è diverso per ogni istanza, in alternativa si dice &lt;strong&gt;gene
 &lt;li&gt;altro&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Chiave&lt;br /&gt;
-&lt;img src=&#34;https://blackdev1l.com/content/images/2014/Oct/chiave.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/chiave.png&#34; alt=&#34;&#34; /&gt;
 identifica in maniera univoca la singola istanza di &lt;strong&gt;entità&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -831,10 +831,10 @@ identifica in maniera univoca la singola istanza di &lt;strong&gt;entità&lt;/st
     
     <item>
       <title>Irc Bot</title>
-      <link>https://blackdev1l.com/post/irc-bot/</link>
+      <link>https://blackdev1l.github.io/post/irc-bot/</link>
       <pubDate>Sun, 21 Sep 2014 17:45:38 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/irc-bot/</guid>
+      <guid>https://blackdev1l.github.io/post/irc-bot/</guid>
       <description>
 
 &lt;p&gt;Salve a tutti! Nelle settimane passate ho scritto un piccolo irc bot insieme a un mio amico in java per un canale tra &amp;ldquo;amici&amp;rdquo; appoggiandoci su delle api per il lato network. L&amp;rsquo;idea generale era implementare i comandi più &amp;ldquo;usati&amp;rdquo; da un bot, cioè !quote youtube parser e magari !seen. Dopo di che &lt;del&gt;abbiamo&lt;/del&gt; ha pensato di cambiare e rendere il bot modulare (cosa che sta pensando a sviluppare lui data la mia scarsa conoscenza di design pattern e affini)&lt;/p&gt;
@@ -860,10 +860,10 @@ identifica in maniera univoca la singola istanza di &lt;strong&gt;entità&lt;/st
     
     <item>
       <title>One Week in the deep South</title>
-      <link>https://blackdev1l.com/post/one-week-in-the-deep-south/</link>
+      <link>https://blackdev1l.github.io/post/one-week-in-the-deep-south/</link>
       <pubDate>Thu, 14 Aug 2014 18:36:17 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/one-week-in-the-deep-south/</guid>
+      <guid>https://blackdev1l.github.io/post/one-week-in-the-deep-south/</guid>
       <description>&lt;p&gt;Dopo una lontananza di ben 2 anni sono ritornato nella mia terra natia, crotone,insieme alla mia ragazza portawai.
 Il viaggio all&amp;rsquo;andata è stato abbastanza tranquillo, la mattina dopo ero abbastanza carico da poter andare direttamente a mare. La voglia di reincontrare i vecchi amici era tanta, infatti da quando avevo deciso di scendere avevo questa fissa in testa e ogni giorno pensavo al viaggio e alla settimana che avrei passato giù.
 Crotone è in lenta agonia, no è cambiato nulla da quando me ne sono andato, negozi sempre più chiusi e vuoti, molte più rotonde devo dire, un mare sempre più sporco (neanche di quello possiamo vantarci più..) e tanta tanta tristezza. Devo dire la verità: Mi sarebbe piaciuto rimanere più a lungo, anche perchè quì a modena non sto combinando nulla, dovrei darmi una seria scrollata e cercare di far qualcosa. Per il resto è stato bello andare a mare con lin, è stato bello finalmente mangiare qualcosa di buono, è stato bello rivedere tutti quanti.&lt;/p&gt;
@@ -876,10 +876,10 @@ Crotone è in lenta agonia, no è cambiato nulla da quando me ne sono andato, ne
     
     <item>
       <title>Arch Linux on Main!</title>
-      <link>https://blackdev1l.com/post/arch-linux-on-main/</link>
+      <link>https://blackdev1l.github.io/post/arch-linux-on-main/</link>
       <pubDate>Thu, 17 Jul 2014 16:45:06 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/arch-linux-on-main/</guid>
+      <guid>https://blackdev1l.github.io/post/arch-linux-on-main/</guid>
       <description>&lt;p&gt;Salve, 3 giorni fa ho deciso di formattare tutto e installare arch linux sul main pensando di poter finalmente rimpiazzare windows (obbligato ad usarlo per videogiocare) con il mio sistema operativo preferito.&lt;/p&gt;
 
 &lt;p&gt;Dopo un veloce &lt;code&gt;dd if=\arch.iso of=/dev/sdc BS=4M&lt;/code&gt; ero pronto alla installazione.
@@ -937,10 +937,10 @@ Dopo aver risolto ogni problema con calma, mi rimane solo questo, facendo un gir
     
     <item>
       <title>Fap Folder Creator pt1</title>
-      <link>https://blackdev1l.com/post/fap-folder-creator-pt1/</link>
+      <link>https://blackdev1l.github.io/post/fap-folder-creator-pt1/</link>
       <pubDate>Sat, 05 Jul 2014 18:29:31 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/fap-folder-creator-pt1/</guid>
+      <guid>https://blackdev1l.github.io/post/fap-folder-creator-pt1/</guid>
       <description>
 
 &lt;p&gt;Hello guys, oggi vi parlo di uno &lt;a href=&#34;https://github.com/blackdev1l/Fap-Folder-Creator&#34;&gt;scriptino&lt;/a&gt; in python che sto scrivendo per imparare il linguaggio, incomincio subito a dire che dopo un anno di c++ scrivere del codice in python è come spegnere il cervello e parlare con una persona. Stupidamente facile e immediato.
@@ -1034,10 +1034,10 @@ Inanzi tutto ho utilizzato un&amp;rsquo;altra funzione delle librerie standard d
     
     <item>
       <title>Post pasqua processing</title>
-      <link>https://blackdev1l.com/post/post-pasqua-processing/</link>
+      <link>https://blackdev1l.github.io/post/post-pasqua-processing/</link>
       <pubDate>Tue, 29 Apr 2014 19:58:52 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/post-pasqua-processing/</guid>
+      <guid>https://blackdev1l.github.io/post/post-pasqua-processing/</guid>
       <description>&lt;p&gt;Ok ennesimo post bimestrale giusto per scrivere qualcosa!&lt;/p&gt;
 
 &lt;p&gt;Long story short: un mese e passa di &amp;ldquo;malattia&amp;rdquo;, ogni settimana una diversa, feels bad.&lt;/p&gt;
@@ -1055,10 +1055,10 @@ Il gioco lo trovo molto bello, scorrevole, grafica carina, qualche problema dal 
     
     <item>
       <title>Malattia, malattia...</title>
-      <link>https://blackdev1l.com/post/malattia-malattia/</link>
+      <link>https://blackdev1l.github.io/post/malattia-malattia/</link>
       <pubDate>Sat, 22 Mar 2014 09:52:04 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/malattia-malattia/</guid>
+      <guid>https://blackdev1l.github.io/post/malattia-malattia/</guid>
       <description>&lt;p&gt;Ah!!! Povero me. Due settimane di tortura. Dopo 5 giorni di febbre a 39 per qualche virus alla gola, neanche una settimana di tregua che  sto male di nuovo, attacchi di dissenteria fino ad  oggi. Altri 4 giorni (e forse di più) di dolori. Mercoledì è stato allucinante, non riuscivo neanche a stare in piedi, dopo le prime due ore di algoritmi sono tornato a casa (non so neanche io come, simpatico un signore di colore sulla bicicletta che mi guarda e fa &amp;ldquo;hey amico, tu stai male! Sei italiano ? Perchè non hai chiamato tuo fratello per venire a prenderti in macchina?&amp;rdquo; , magari gringo, magari&amp;hellip;.) e appena arrivato mi sono buttato a letto fino alle 13, completamente distrutto, senza forze, a mala pena ho mangiato un po&amp;rsquo; di riso bianco. Febbre a 38.5 (again) , Oggi sarei dovuto andare alla &lt;a href=&#34;http://www.palazzomagnani.it/2013/07/lenigma-escher/&#34;&gt;Mostra di Escher&lt;/a&gt; a Reggio Emilia con Yingle ma questo mal di pancia non mi lascia pace. Mi dispiace tanto.&lt;/p&gt;
 
 &lt;p&gt;####Counter Strike: Gamesvillage Offensive
@@ -1078,10 +1078,10 @@ Ability Draft è una modalità di Dota 2 in cui a ognuno viene assegnato un eroe
     
     <item>
       <title>New Semester</title>
-      <link>https://blackdev1l.com/post/new-semester/</link>
+      <link>https://blackdev1l.github.io/post/new-semester/</link>
       <pubDate>Sat, 15 Mar 2014 22:50:17 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/new-semester/</guid>
+      <guid>https://blackdev1l.github.io/post/new-semester/</guid>
       <description>&lt;p&gt;Il secondo semestre è iniziato, l&amp;rsquo;habit è stato settato meglio di quanto mi aspettassi: Primi posti centrali. Fa molto secchia ma è l&amp;rsquo;unico modo per potermi dare la prova che cerco e capire se questo corso fa per me oppure no.
 Stare alla prima fila da soli vantaggi. Quando siamo in aula IV / V è piuttosto facile prendere posto, il problema arriva nel momento in cui siamo in laboratorio, prendere i primi posti è dura e la differenza tra prima e seconda fila si nota tantissimo in termini di concentrazione.
 Sto cercando di dare il 100% , sto seguendo, prendendo appunti, &lt;strong&gt;ricopiandoli in bella&lt;/strong&gt; e ripassando a casa. Fino ad ora sto notando rispetto all&amp;rsquo;anno scorso di riuscire a stare dietro ai professori, Algoritmi è molto più difficile, ma non demordo.
@@ -1093,10 +1093,10 @@ Mentre il libro non è più &amp;ldquo;Introduzione agli algoritmi e strutture d
     
     <item>
       <title>Fine Gennaio 2014</title>
-      <link>https://blackdev1l.com/post/fine-gennaio-2014-2/</link>
+      <link>https://blackdev1l.github.io/post/fine-gennaio-2014-2/</link>
       <pubDate>Thu, 30 Jan 2014 15:28:40 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/fine-gennaio-2014-2/</guid>
+      <guid>https://blackdev1l.github.io/post/fine-gennaio-2014-2/</guid>
       <description>&lt;p&gt;####Premessa
 L&amp;rsquo;idea di aggiornare questo blog una volta alla settimana era bella, ma evidentemente è un compito troppo arduo per me. Quando settai il blog  probabilmente quello di cui sentivo bisogno non era scrivere ma solo smanettare con qualcosa.
 Beh, vediamo di renderlo utile allora.&lt;/p&gt;
@@ -1131,10 +1131,10 @@ il gruppo sta crescendo esponenzialmente e spero di non trovare in futuro elemen
     
     <item>
       <title>A new VPS</title>
-      <link>https://blackdev1l.com/post/a-new-vps/</link>
+      <link>https://blackdev1l.github.io/post/a-new-vps/</link>
       <pubDate>Mon, 25 Nov 2013 16:25:24 +0000</pubDate>
       
-      <guid>https://blackdev1l.com/post/a-new-vps/</guid>
+      <guid>https://blackdev1l.github.io/post/a-new-vps/</guid>
       <description>&lt;p&gt;##HELLO WORLD!&lt;/p&gt;
 
 &lt;p&gt;stanotte verso le 2 mi hanno risposto al ticket che ho creato riguardo l&amp;rsquo;impossibilità di connettermi a internet attraverso la vps, mi hanno detto che era un problema del firewall della serverfarm e ora è tutto O.K. , infatti ora sto scrivendo dalla mia nuovissima vps !
