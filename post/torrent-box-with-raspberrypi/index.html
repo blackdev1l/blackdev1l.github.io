@@ -5,19 +5,19 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.19-DEV" />
+  <meta name="generator" content="Hugo 0.26-DEV" />
 
   <title>Torrent-box with Raspberry Pi &middot; Cristian&#39;s blog</title>
 
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
@@ -30,17 +30,21 @@
   <link rel="stylesheet" href="https://blackdev1l.github.io/css/blackburn.css">
 
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
   
 
   
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
   <script>hljs.initHighlightingOnLoad();</script>
   
 
@@ -71,13 +75,13 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://blackdev1l.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="https://blackdev1l.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://blackdev1l.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+          <a class="pure-menu-link" href="https://blackdev1l.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
@@ -140,6 +144,8 @@
     
 
     
+
+    
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://reddit.com/user/blackdev1l" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
     </li>
@@ -153,6 +159,8 @@
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://github.com/blackdev1l" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
     </li>
+    
+
     
 
     
@@ -234,22 +242,24 @@
 
 </div>
 
-  <p>Hello folks! Today english post (my first one) , we are going to build a simple torrent-box with the raspberry pi, an old hard drive and a little bit of  GNU/Linux magic!</p>
+  
 
-<p>##Boot up and update raspbian</p>
+<p>Hello folks! Today english post (my first one) , we are going to build a simple torrent-box with the raspberry pi, an old hard drive and a little bit of  GNU/Linux magic!</p>
+
+<h2 id="boot-up-and-update-raspbian">Boot up and update raspbian</h2>
 
 <p>First off, make sure to have a fresh clean install of raspbian, just in case something goes wrong, you can debug these steps and see what&rsquo;s wrong, instead of remember months of tweaking and hacking on an old installation.
 update &amp; upgrade raspberry  raspbian with <code>sudo apt-get update</code> and <code>sudo apt-get upgrade</code> , after that, let&rsquo;s install some programs we will need later.
 <code>sudo apt-get install samba samba-common-bin btrfs-tools avahi-daemon python-dev python-setuptools transmission-daemon</code></p>
 
-<p>##SSH all the way</p>
+<h2 id="ssh-all-the-way">SSH all the way</h2>
 
 <p>put a fancy <a href="http://en.wikipedia.org/wiki/Hostname">hostname</a> on your raspberry, the default one is <code>raspberrypi</code>, if you want to change it just give <code>sudo hostname newhostname</code> , so you can identify your raspberry with a different and original hostname, i prefer to use the default one because i just have one raspberry, from now on raspberrypi will be the hostname on this tutorial.<br />
 With <code>avahi-daemon</code> you can forget about ip and such, because you can now ssh using your hostname on domain .local, for more info about avahi-daemon <a href="http://linux.die.net/man/8/avahi-daemon">read here</a> .
 Just in case, write down your local ip, you can find it with <code>hostname -I</code> , So if you can&rsquo;t log in with the hostname.local you can always log in with the ip.
 Now you can unplug your keyboard and monitor and start to use it via ssh.</p>
 
-<p>##Headless Pi</p>
+<h2 id="headless-pi">Headless Pi</h2>
 
 <ul>
 <li>Windows<br />
@@ -259,16 +269,18 @@ For ssh, i think one of the best option is to use the great <a href="http://www.
 One of the great things about GNU/Linux is that most of the tools are already installed, so you can just ssh from terminal with <code>ssh pi@raspberrypi.local</code> where pi is the default user on Raspbian and raspberrypi.local the hostname name inside the local domain given by the avahi-daemon.</li>
 </ul>
 
-<p>##Use btrfs as filesystem</p>
+<h2 id="use-btrfs-as-filesystem">Use btrfs as filesystem</h2>
 
 <p>I decided to use btrfs as filesystem because i like how it handles raid systems and how flexibile it is with the partions. Use it is as simple as any other filesystem, plus, you don&rsquo;t have to worry about the first partition first because it handles all  itself.
-assuming you have your hard drive plugged in via usb and it is mapped as <code>/dev/sda/</code> (make sure with lslblk) , you can format it with <code>sudo mkfs.btrfs -m single /dev/sda1</code> , it is now ready to use.
-##Auto mount Hard Drive at startup
-open your <code>/etc/fstab</code> with <code>sudo nano /etc/fstab</code> and add this line:
+assuming you have your hard drive plugged in via usb and it is mapped as <code>/dev/sda/</code> (make sure with lslblk) , you can format it with <code>sudo mkfs.btrfs -m single /dev/sda1</code> , it is now ready to use.</p>
+
+<h2 id="auto-mount-hard-drive-at-startup">Auto mount Hard Drive at startup</h2>
+
+<p>open your <code>/etc/fstab</code> with <code>sudo nano /etc/fstab</code> and add this line:
 <code>/dev/sda1       /home/pi/share  btrfs   defaults,nossd  0       1</code><br />
 With this you will automount your hard drive everytime you plug it and on startup, with the mount position on <code>/home/pi/share</code> , if you want, you can change it (usually it is in the /media/ folder) , make sure to create the folder before to mount, so we are going to <code>mkdir /home/pi/share</code> and then <code>mount -a</code> , give at your user the write/read permission to that folder with <code>sudo chown -R pi:pi /home/pi/share/</code>  and you should be all set for the next step.</p>
 
-<p>##Samba</p>
+<h2 id="samba">Samba</h2>
 
 <p>Samba is a free software that gives share services between devices, it is often used with printers and it is compatible with different OS, so you can see and write/read from a windwos machine to a GNU/Linux server.
 let&rsquo;s start making a copy of the default smb.conf, so if we fuck up the config, we have the default config saved.
@@ -297,7 +309,7 @@ give read/write permission too with <code>sudo chmod 0755 /home/pi/share</code> 
 
 <p>test it out with another computer!</p>
 
-<p>##Transmission-Daemon</p>
+<h2 id="transmission-daemon">Transmission-Daemon</h2>
 
 <p>add the transmission-daemon user to the group of your default user:
 <code>sudo usermod -a -G debian-transmission pi</code> , now, create some folders and add the proper permission:</p>
@@ -324,19 +336,20 @@ now modify transmission config:
 
 <p>now start the daemon again, with <code>sudo service transmission-daemon start</code></p>
 
-<p>you can view your transmission daemon via webclient, just open <a href="http://raspberrypi.local:9091/transmission/web/">http://raspberrypi.local:9091/transmission/web/</a> from your browser and log in with the credentials you given in the config!
-##Python, pip, and virtualenv</p>
+<p>you can view your transmission daemon via webclient, just open <a href="http://raspberrypi.local:9091/transmission/web/">http://raspberrypi.local:9091/transmission/web/</a> from your browser and log in with the credentials you given in the config!</p>
+
+<h2 id="python-pip-and-virtualenv">Python, pip, and virtualenv</h2>
 
 <p>Now we are going to set up pip and virtualenv, because we are going to need them for 2 pieces of software that will do almost all the magic.
 install pip with <code>sudo easy_install pip</code> , then virtualenv with <code>sudo pip install virtualenv</code>.
 Don&rsquo;t forget to install transmission-rpc, so you can view your torrents from clients such transmission-GUI or transdroid
 <code>sudo pip install transmissionrpc</code></p>
 
-<p>###What is virtualenv and why you always should use it</p>
+<h3 id="what-is-virtualenv-and-why-you-always-should-use-it">What is virtualenv and why you always should use it</h3>
 
 <p>Virtualenv it&rsquo;s a tool that lets you create standalone python enviroments, what does that means? It means that if you are going to download a python software that has a lot of dependencies, and you are afraid about versioning and clean install, you can have an enviroment completely clean to use it just for your software, so you won&rsquo;t have unnecessary libraries and modules on your default python folder, and when you are done with your software, you can easily remove your enviroment (a simple folder) and have all the dependencies deleted from your filesystem. If you are still confuse, read <a href="http://simononsoftware.com/virtualenv-tutorial/">this</a> and <a href="http://iamzed.com/2009/05/07/a-primer-on-virtualenv/">this</a>, i&rsquo;m sure you are going to love virtualenv.</p>
 
-<p>##Flexget</p>
+<h2 id="flexget">Flexget</h2>
 
 <p>ok, now that we have virtualenv, create one env for flexget with <code>virtualenv env/flexget</code> and now we can use the activate script to enter the enviroment.
 <code>source ./env/flexget/bin/activate</code> from now on, we are in the flexget enviroment, and we can safely install flexget from here with pip: <code>pip install flexget</code></p>
@@ -371,7 +384,7 @@ schedules:
 
 <p>This task will look every 6 hours if there is any torrent that i haven&rsquo;t download on my generated feed rss from showrss. You can extend or modify this task to do complex things, sky is the limit!</p>
 
-<p>###Crontab flexget</p>
+<h3 id="crontab-flexget">Crontab flexget</h3>
 
 <p>If you want that flexget starts with the pi, add to your crontab your flexget daemon:
 <code>crontab -e</code><br />
@@ -379,7 +392,7 @@ add this line at the end of file:
 <code>@reboot /home/pi/env/flexget/bin/flexget daemon start</code><br />
 save and close.</p>
 
-<p>##Enjoy</p>
+<h2 id="enjoy">Enjoy</h2>
 
 <p>Now you have a full torrent-box with an auto-downloader for your latest show, amazing right? You can do a lot more, i&rsquo;ll probably write another blog post or maybe extend this with auto-download subtitles and other amazing things, stay tuned!</p>
 
@@ -442,6 +455,8 @@ save and close.</p>
 </div>
 </div>
 <script src="https://blackdev1l.github.iojs/ui.js"></script>
+
+
 
 
 

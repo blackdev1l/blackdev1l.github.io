@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Cristian&#39;s blog</title>
-    <link>https://blackdev1l.github.io/post/index.xml</link>
+    <link>https://blackdev1l.github.io/post/</link>
     <description>Recent content in Posts on Cristian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Fri, 29 Jan 2016 17:37:47 +0000</lastBuildDate>
-    <atom:link href="https://blackdev1l.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://blackdev1l.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Pretty Good Privacy</title>
@@ -15,170 +17,7 @@
       <pubDate>Fri, 29 Jan 2016 17:37:47 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/pretty-good-privacy/</guid>
-      <description>
-
-&lt;p&gt;Pretty Good Privacy (da ora &lt;strong&gt;PGP&lt;/strong&gt;) è un programma e standard crittografico basato su crittografia asimettrica&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:n&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:n&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;; è uno dei sistemi crittografici più usati in informatica.
-L&amp;rsquo;implementazione più usata è quella di &lt;strong&gt;GNU&lt;/strong&gt;, chiamata &lt;strong&gt;GNUPG&lt;/strong&gt; o &lt;strong&gt;gpg&lt;/strong&gt;, in genere installata di default sui sistemi GNU/Linux.
-Puo&amp;rsquo; essere usata per crittografare o firmare digitalmente file, cartelle, partizioni e email, quest&amp;rsquo;ultimo è l&amp;rsquo;utilizzo più indicato per pgp, ed è quello che affronterò in questo post.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;creazione&#34;&gt;Creazione&lt;/h2&gt;
-
-&lt;p&gt;Assicuratevi di avere installato sul vostro sistema il pacchetto pgp.
-&lt;strong&gt;importante:&lt;/strong&gt; create la chiave su un computer che ritenete protetto e affidabile.&lt;/p&gt;
-
-&lt;p&gt;iniziamo a creare la coppia di chiavi:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gpg --full-gen-key
-gpg (GnuPG) 2.1.10; Copyright (C) 2015 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-Please select what kind of key you want:
-   (1) RSA and RSA (default)
-   (2) DSA and Elgamal
-   (3) DSA (sign only)
-   (4) RSA (sign only)
-Your selection?
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;questo vi  mostrerà una serie di opzioni, premete pure invio o 1, scegliendo l&amp;rsquo;opzione &lt;code&gt;(1) RSA and RSA (default)&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;RSA keys may be between 1024 and 4096 bits long.
-What keysize do you want? (2048) 4096
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;il mio consiglio è di creare sempre una chiave più lunga possibile, essendo il limite ad oggi 4096 bit, usate questa lunghezza.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Please specify how long the key should be valid.
-         0 = key does not expire
-      &amp;lt;n&amp;gt;  = key expires in n days
-      &amp;lt;n&amp;gt;w = key expires in n weeks
-      &amp;lt;n&amp;gt;m = key expires in n months
-      &amp;lt;n&amp;gt;y = key expires in n years
-Key is valid for? (0) 2y
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Si consiglia di tenere la data di validità di un anno, io in genere inserisco due anni, ricordatevi sempre di inserire un promemoria da qualche parte per modificare la chiave e aumentare di altri n anni qualche giorno prima che scada.&lt;/p&gt;
-
-&lt;p&gt;Dopo di che, il programma vi chiederà nome, un commento, e email. Finita questa fase c&amp;rsquo;è l&amp;rsquo;inserimento di una &lt;strong&gt;passphase&lt;/strong&gt; , molto importante anche questo, inserire una passphrase lunga perchè in caso di furto della chiave segreta  è l&amp;rsquo;unica cosa che salverebbe le informazioni che avrete crittografato.
-Ora il programma vi chiederà di fare altro, scrivere sulla tastiera o muovere il mouse, fate qualcosa durante questo processo, una volta finito di generare entropia avrete una coppia di chiavi pgp.&lt;/p&gt;
-
-&lt;p&gt;ultima cosa: creiamo un certificato di revoca delle chiavi in caso di furto. Questo step è meglio non saltarlo.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;gpg --output revocation.gpg --gen-revoke &amp;lt;tua@email.it&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;per i più paranoici: In molti consigliano la creazione di sottochiavi per firmare e crittografare, e tenere la coppia di chiavi generati in un posto sicuro, rimuovendole dal keyring del portatile (o fisso).&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;utilizzo&#34;&gt;Utilizzo&lt;/h2&gt;
-
-&lt;h5 id=&#34;keyserver&#34;&gt;keyserver&lt;/h5&gt;
-
-&lt;p&gt;Prima cosa, se non è già impostato di default, inserite nella config di gnupg un keyserver da cui prelevare e aggiornare le chiavi pubbliche che man mano inserirete nel vostro keyring.
-&lt;code&gt;echo &#39;keyserver hkp://keys.gnupg.net&#39; &amp;gt;&amp;gt; ~/.gnupg/gpg.conf&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;non importa quale keyserver scegliate, la chiave si propagherà in ogni keyserver.&lt;/p&gt;
-
-&lt;p&gt;dopo di che, il modo più veloce per distruibre la vostre chiave pubblica è caricandola sul keyserver.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;gpg --send-key &amp;lt;vostra@email.it&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;ora la vostra chiave pubblica è su un keyserver, chiunque voglia scrivervi o mandare un file crittografato potrà scaricarla dal keyserver e utilizzarla per crittare i documenti o le email. solo la vostra chiave segreta potra decrittare i documenti crittati dalla vostra chiave pubblica.&lt;/p&gt;
-
-&lt;h5 id=&#34;lista-delle-chiavi-nel-keyring&#34;&gt;lista delle chiavi nel keyring&lt;/h5&gt;
-
-&lt;p&gt;per mostrare le chiavi pubbliche nel vostro keyring, basta dare il comando
-&lt;code&gt;gpg --list-key&lt;/code&gt;&lt;br /&gt;
-  &lt;strong&gt;attenzione&lt;/strong&gt;: mostrerà solo quelle pubbliche. per mostrar anche quelle private bisogna utilizzare il comando &lt;code&gt;gpg --list-secret-keys&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;esportare-importare-chiavi&#34;&gt;esportare/importare chiavi&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;esportare chiave pubblica:
-&lt;code&gt;gpg --export -a &amp;quot;user name&amp;quot; &amp;gt; pub.asc&lt;/code&gt;&lt;br /&gt;
-nota: -a imposta l&amp;rsquo;esportazione della chiave in ascii armor, utile per poter inviare la chiave pubblica in &lt;a href=&#34;https://blackdev1l.github.io/pgp.txt&#34;&gt;formato testuale&lt;/a&gt;.&lt;br /&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;esportare chiave privata:
-&lt;code&gt;gpg --export-secret-key -a &amp;quot;User Name&amp;quot; &amp;gt; private.asc&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;importare chiave pubblica&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;da file:
-&lt;code&gt;gpg --import public.key&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;da keyserver:
-&lt;code&gt;gpg --recv-key &amp;lt;KEY ID&amp;gt;&lt;/code&gt; la key id si puo&amp;rsquo; trovare cercando sul sito del keyserver, bisogna fare attenzione a scaricare quella giusta, fare attenzione al fingerprint della chiave e se ci sono firme che confermano che la chiave è autentica.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;firma-e-verifica&#34;&gt;firma e verifica&lt;/h5&gt;
-
-&lt;p&gt;firmare un email o un file con una chiave pgp permette di dimostrare l&amp;rsquo;autorevolezza del contenuto del messaggio e identificare che quanto inviato/scritto sia stato veramente formulato dal mittente del messaggio/documento.
-mettiamo caso vogliamo firmare un documento senza crittarlo per dimostrare che il documento è stato scritto da noi, abbiamo due possibilità:
-avere la firma &lt;em&gt;inline&lt;/em&gt;, oppure avere la firma separata al documento.
-mettiamo caso abbiamo un file chiamato hi.txt il cui contenuto è &lt;code&gt;ciao&lt;/code&gt; utilizzando il comando
-&lt;code&gt;gpg --clearsign hi.txt&lt;/code&gt;
-il risultato sarà&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA256
-
-ciao
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJWq5BQAAoJEIIWH9NMFC2Wu5oQALTtDkdI4nt9IGp5FBmv1OLf
-svBfipCPEy4pvlyQ4kfZGoc2A9ywMr6pYR95cAriRGlUT3yBo2XqlXD4l24lD6Bm
-FTsXdKkUswhvtaOyTdvbkYrEZuvEUAdvBfIjK53Yn3/eAQU5TBOUWfmN1JEMVgP8
-d5/EYY62fRLnys8pbzBGQ9f51iSGNuUQNAe/6aajQayd+RPJheZVdBw0xjNOTx20
-wG5b82NuraGBzEAxnoV9uqnUrS8Eq8MiK0UP4Pmc7TmBFzlyPtzqR313He6YpxvD
-Bs67awTJyYpiCWKYD9PEWiVPqTdBmWx7FjteT7rjU/6F68sYFOWabNZVuAPLcMT4
-Hm2rojkUqlJmfTTrcbBShTLo2P8pLrVrYXoz4POcW/Pq0aY0rG5b4Oo2UZYlJlmP
-FfEljDmc1mV0jor/n8GWr0jiNu4VeR5Pkd7hoxIEf0APGVnZAkVav9Kv+Y2zf/PA
-auHMxY9Im8CwjfS3Wru8PyGYCxUSG/YPvXONRai5M9/8CQM5Oz5CGhrL4xRbjr1V
-RiFA8Ck0uhh2LWf0v5JlnDb9di30Q7UFSzKUeY4DI0idp668mxksLoMEIYqcf39u
-PtS2DK7mDQFjrVbBZ4PkEC5aBs3GB1QdKhfa1hzNS6D7QFoGgmb71lETvaHaOgg6
-uVW3Kxs78ySS9CeUVJpg
-=SefM
------END PGP SIGNATURE-----
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;mentre con &lt;code&gt;gpg --output hi.txt.sig --detach-sig hi.txt&lt;/code&gt;
-avremo la firma sotto forma di file.&lt;/p&gt;
-
-&lt;h5 id=&#34;crittare-e-decrittare&#34;&gt;crittare e decrittare&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;crittare: &lt;code&gt;gpg -e file&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;decrittare:  &lt;code&gt;gpg [-d] file&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;email&#34;&gt;Email&lt;/h2&gt;
-
-&lt;p&gt;La vera forza di gpg sta nell&amp;rsquo;utilizzarlo per scambiare email. Probabilmente l&amp;rsquo;utilizzo più diffuso è quello della firma delle email, firmando le email con la propria chiave gpg, come già detto prima, permette di essere sicuri che quella email è stata mandata davvero da voi. Fortunatamente sono stati creati plugins e strumenti grafici che ci aiutano e facilitano notevolmente il lavoro, cosìcchè firmare e criptare un email sarà facile come premere un tasto sullo schermo, senza dover ricorrere continuamente al terminale.
-Probabilmente il più utilizzato sia su windows che su linux è &lt;a href=&#34;https://www.enigmail.net/home/index.php&#34;&gt;Enigmail&lt;/a&gt;, plugin per thunderbird fenomenale, rende l&amp;rsquo;esperienza di utilizzo indolore. Invece se preferite usare la webmail, conosco &lt;a href=&#34;https://www.mailvelope.com/&#34;&gt;Mailvelope&lt;/a&gt;, un estensione per il browser che permette di utilizzare pgp senza impazzire.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;l-importanza-di-utilizzare-pgp&#34;&gt;L&amp;rsquo;importanza di utilizzare PGP&lt;/h2&gt;
-
-&lt;p&gt;Chiudo questo post con una mia piccola riflessione, che non è solo mia, ma che è di tutti quelli che hanno a cuore la propria privacy, specialmente in questa era dove le nostre informazioni valgono tanto e vengono utilizzate per scopi di lucro o peggio; è importante cercare in tutti i modi di salvare da occhi indiscreti queste informazioni, l&amp;rsquo;utilizzo di pgp è uno di questi, stiamo lentamente perdendo sempre più potere sui nostri dati personali e sulle informazioni che giornalmente condividiamo su internet. Non bisogna avere qualcosa da nascondere per dover aver a cuore la privacy.&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:n&#34;&gt;in verità utilizza sia la crittografia simettrica che asimettrica, viene evidenziata la sua natura asimettrica durante l&amp;rsquo;utilizzo.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:n&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <description>Pretty Good Privacy (da ora PGP) è un programma e standard crittografico basato su crittografia asimettrica1; è uno dei sistemi crittografici più usati in informatica. L&amp;rsquo;implementazione più usata è quella di GNU, chiamata GNUPG o gpg, in genere installata di default sui sistemi GNU/Linux. Puo&amp;rsquo; essere usata per crittografare o firmare digitalmente file, cartelle, partizioni e email, quest&amp;rsquo;ultimo è l&amp;rsquo;utilizzo più indicato per pgp, ed è quello che affronterò in questo post.</description>
     </item>
     
     <item>
@@ -187,34 +26,8 @@ Probabilmente il più utilizzato sia su windows che su linux è &lt;a href=&#34;
       <pubDate>Sat, 23 May 2015 19:34:54 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/resoconto-primo-quadrimestre-2015/</guid>
-      <description>&lt;p&gt;Buonasera!
-Scrivo questo post in estremo ritardo, mi ero ripromesso di scrivere almeno un post a settimana, ma la vita si è messa in mezzo, quindi ho dovuto ritardare fino ad oggi. Colgo l&amp;rsquo;opportunità di questo Giovedì pomeriggio (siamo ormai al weekend, right?) per aggiornare questo blog, con una veste rinnovata, e tante cose belle da annunciare!&lt;/p&gt;
-
-&lt;p&gt;Prima cosa: Ho trovato lavoro. Ok, non è un vero e proprio lavoro, ma più un tirocinio &lt;em&gt;retribuito&lt;/em&gt; alla fine son sempre 8 e mi pagano, possiamo chiamarlo lavoro, sottopagato, ma lavoro.&lt;/p&gt;
-
-&lt;p&gt;Sono stato abbastanza &amp;ldquo;fortunato&amp;rdquo; nel trovarlo, dopo tutto durante la ricerca questo è stato il primo colloquio effettuato e sono stato subito assunto, dopo una eterna e lunga sequela di carte burocratiche da compilare, ritirare, stampare, spedire.&lt;/p&gt;
-
-&lt;p&gt;Comunque, mi occupo di quello che mi piace, software development, precisamente di quello per cui ho &lt;em&gt;studiato&lt;/em&gt; da me nel periodo tra la rinuncia agli studi, &lt;strong&gt;Ruby on rails&lt;/strong&gt; e &lt;strong&gt;sviluppo android&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;impatto col mondo del lavoro, devo dire la verità, non è stato così traumatico come pensassi. Ho sentito tantissime storie dell&amp;rsquo;orrore, dall&amp;rsquo;impossibilità di trovare lavoro, al mobbing sfrenato per i neo-assunti, all&amp;rsquo;utilizzo di tecnologie ormai che definire archeologiche è poco.&lt;/p&gt;
-
-&lt;p&gt;Niente di tutto questo, almeno per ora, ho trovato lavoro al primo colloquio e l&amp;rsquo;ambiente è estremamente positivo, uso tecnologie moderne, in un settore che è in continua evoluzione, non potevo chiedere di meglio, anzi forse sì, un salario migliore, ma non si puo&amp;rsquo; avere tutto dalla vita purtroppo.&lt;/p&gt;
-
-&lt;p&gt;I colleghi sono stati molto gentili e mi trovo estremamente bene, non posso davvero lamentarmi.&lt;/p&gt;
-
-&lt;p&gt;Un fattore non so se considerare positivo o negativo, è stato quello di avermi subito messo a lavorare ad un progetto, da solo, senza nessuna restrizione, i punti positivi sono la totale libertà di lavorare a un progetto come mi pare a me, con le tecnologie che preferisco, dall&amp;rsquo;altra beh, sono appunto &lt;em&gt;on my own&lt;/em&gt;, devo gestire tutto io, progettare da solo l&amp;rsquo;architettura del programma e ogni aspetto. Per fortuna sono riuscito a cavarmela, il progetto è piaciuto, e sta andando avanti. Sono soddisfatto di me, del lavoro svolto e di come stanno andando le cose.&lt;/p&gt;
-
-&lt;p&gt;Nel mentre, sto passando un mese da pendolare, dormendo a casa della mia ragazza, i suoi parenti sono andati in Cina, e possiamo stare un po&amp;rsquo; di tempo insieme, aiutandola al bar.
-Non è facile, sopratutto lavorando, quindi, avendo un orario da ufficio da rispettare ed essendo pendolare, mi tocca correre spesso tra treno, bus, e bici (si, con la mia nuova bici pieghevole faccio avanti e indietro con essa).&lt;/p&gt;
-
-&lt;p&gt;Ho anche ricevuto il mio primo stipendio, che bello finalmente &lt;strong&gt;guadagnare&lt;/strong&gt; soldi con la propria passione. Seppur pochi, &lt;em&gt;sigh&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ho intenzione di iniziare a staccarmi da google, un intenzione maturata ormai da qualche anno, ma è difficile, molto difficile. Spero col tempo di farcela, non mi piace la piega che sta prendendo internet, non mi piace sopratutto come google stia diventando una sorta di Skynet o qualcosa di simile. Il futuro sembra sempre più a tinte cyberpunk, e ciò non mi piace.&lt;/p&gt;
-
-&lt;p&gt;Continuerò a scrivere qualcosa nei prossimi giorni, magari in un secondo post o su questo, chissà.&lt;/p&gt;
-
-&lt;p&gt;Au revoir.&lt;/p&gt;
-</description>
+      <description>Buonasera! Scrivo questo post in estremo ritardo, mi ero ripromesso di scrivere almeno un post a settimana, ma la vita si è messa in mezzo, quindi ho dovuto ritardare fino ad oggi. Colgo l&amp;rsquo;opportunità di questo Giovedì pomeriggio (siamo ormai al weekend, right?) per aggiornare questo blog, con una veste rinnovata, e tante cose belle da annunciare!
+Prima cosa: Ho trovato lavoro. Ok, non è un vero e proprio lavoro, ma più un tirocinio retribuito alla fine son sempre 8 e mi pagano, possiamo chiamarlo lavoro, sottopagato, ma lavoro.</description>
     </item>
     
     <item>
@@ -223,155 +36,8 @@ Non è facile, sopratutto lavorando, quindi, avendo un orario da ufficio da risp
       <pubDate>Sun, 08 Mar 2015 15:53:51 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/torrent-box-with-raspberrypi/</guid>
-      <description>&lt;p&gt;Hello folks! Today english post (my first one) , we are going to build a simple torrent-box with the raspberry pi, an old hard drive and a little bit of  GNU/Linux magic!&lt;/p&gt;
-
-&lt;p&gt;##Boot up and update raspbian&lt;/p&gt;
-
-&lt;p&gt;First off, make sure to have a fresh clean install of raspbian, just in case something goes wrong, you can debug these steps and see what&amp;rsquo;s wrong, instead of remember months of tweaking and hacking on an old installation.
-update &amp;amp; upgrade raspberry  raspbian with &lt;code&gt;sudo apt-get update&lt;/code&gt; and &lt;code&gt;sudo apt-get upgrade&lt;/code&gt; , after that, let&amp;rsquo;s install some programs we will need later.
-&lt;code&gt;sudo apt-get install samba samba-common-bin btrfs-tools avahi-daemon python-dev python-setuptools transmission-daemon&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;##SSH all the way&lt;/p&gt;
-
-&lt;p&gt;put a fancy &lt;a href=&#34;http://en.wikipedia.org/wiki/Hostname&#34;&gt;hostname&lt;/a&gt; on your raspberry, the default one is &lt;code&gt;raspberrypi&lt;/code&gt;, if you want to change it just give &lt;code&gt;sudo hostname newhostname&lt;/code&gt; , so you can identify your raspberry with a different and original hostname, i prefer to use the default one because i just have one raspberry, from now on raspberrypi will be the hostname on this tutorial.&lt;br /&gt;
-With &lt;code&gt;avahi-daemon&lt;/code&gt; you can forget about ip and such, because you can now ssh using your hostname on domain .local, for more info about avahi-daemon &lt;a href=&#34;http://linux.die.net/man/8/avahi-daemon&#34;&gt;read here&lt;/a&gt; .
-Just in case, write down your local ip, you can find it with &lt;code&gt;hostname -I&lt;/code&gt; , So if you can&amp;rsquo;t log in with the hostname.local you can always log in with the ip.
-Now you can unplug your keyboard and monitor and start to use it via ssh.&lt;/p&gt;
-
-&lt;p&gt;##Headless Pi&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Windows&lt;br /&gt;
-on Windows, make sure to have bonjour services installed, if you have Itunes, you should be ready to use .local domains inside your network, open your command line and ping your raspberry with &lt;code&gt;ping raspberrypi.local&lt;/code&gt; where raspberrypi is the hostname, if it pings back then you can ssh, if not, install &lt;a href=&#34;https://support.apple.com/kb/DL999?locale=en_US&#34;&gt;this&lt;/a&gt; (it&amp;rsquo;s for printers but indeed it install bonjour services to use with every application) .
-For ssh, i think one of the best option is to use the great &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/&#34;&gt;putty&lt;/a&gt; , In hostname write your &amp;ldquo;raspberrypi.local&amp;rdquo; and leave the default port.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;GNU/Linux&lt;br /&gt;
-One of the great things about GNU/Linux is that most of the tools are already installed, so you can just ssh from terminal with &lt;code&gt;ssh pi@raspberrypi.local&lt;/code&gt; where pi is the default user on Raspbian and raspberrypi.local the hostname name inside the local domain given by the avahi-daemon.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;##Use btrfs as filesystem&lt;/p&gt;
-
-&lt;p&gt;I decided to use btrfs as filesystem because i like how it handles raid systems and how flexibile it is with the partions. Use it is as simple as any other filesystem, plus, you don&amp;rsquo;t have to worry about the first partition first because it handles all  itself.
-assuming you have your hard drive plugged in via usb and it is mapped as &lt;code&gt;/dev/sda/&lt;/code&gt; (make sure with lslblk) , you can format it with &lt;code&gt;sudo mkfs.btrfs -m single /dev/sda1&lt;/code&gt; , it is now ready to use.
-##Auto mount Hard Drive at startup
-open your &lt;code&gt;/etc/fstab&lt;/code&gt; with &lt;code&gt;sudo nano /etc/fstab&lt;/code&gt; and add this line:
-&lt;code&gt;/dev/sda1       /home/pi/share  btrfs   defaults,nossd  0       1&lt;/code&gt;&lt;br /&gt;
-With this you will automount your hard drive everytime you plug it and on startup, with the mount position on &lt;code&gt;/home/pi/share&lt;/code&gt; , if you want, you can change it (usually it is in the /media/ folder) , make sure to create the folder before to mount, so we are going to &lt;code&gt;mkdir /home/pi/share&lt;/code&gt; and then &lt;code&gt;mount -a&lt;/code&gt; , give at your user the write/read permission to that folder with &lt;code&gt;sudo chown -R pi:pi /home/pi/share/&lt;/code&gt;  and you should be all set for the next step.&lt;/p&gt;
-
-&lt;p&gt;##Samba&lt;/p&gt;
-
-&lt;p&gt;Samba is a free software that gives share services between devices, it is often used with printers and it is compatible with different OS, so you can see and write/read from a windwos machine to a GNU/Linux server.
-let&amp;rsquo;s start making a copy of the default smb.conf, so if we fuck up the config, we have the default config saved.
-&lt;code&gt;cd /etc/samba&lt;/code&gt; then &lt;code&gt;sudo cp smb.conf smb.conf.original&lt;/code&gt; , now let&amp;rsquo;s modify smb.conf with &lt;code&gt;sudo nano smb.conf&lt;/code&gt; !&lt;br /&gt;
-change &lt;code&gt;#Security&lt;/code&gt; with &lt;code&gt;security&lt;/code&gt; under &lt;strong&gt;authentication&lt;/strong&gt; section.
-seach for &lt;code&gt;wins support&lt;/code&gt; and change it from no to yes.
-search for &lt;code&gt;workgroup&lt;/code&gt; and change it (if you want) with your workgroup name (it can be anything you want).
-now, save and exit from file, and restart samba services with &lt;code&gt;sudo /etc/init.d/samba restart&lt;/code&gt;.
-create your samba password for you user with &lt;code&gt;sudo smbpasswd -a &amp;lt;username&amp;gt;&lt;/code&gt; (you must put your username, if pi is your user then put pi) .
-open again your smb.conf with &lt;code&gt;sudo nano smb.conf&lt;/code&gt; and create your first samba shared folder.
-paste this at the end of the file&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[USBShare]
-comment = USB share
-path = /home/pi/share
-writeable = yes
-only guest = no
-create mask = 0777
-directory mask = 0777
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;you can change &lt;code&gt;USBShare&lt;/code&gt; with the name of the samba folder you want to put, and comment too, path is the location of the mounted folder.
-give read/write permission too with &lt;code&gt;sudo chmod 0755 /home/pi/share&lt;/code&gt; and &lt;code&gt;sudo chown -R &amp;lt;username&amp;gt; /home/pi/share&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;restart samba for the last time &lt;code&gt;sudo /etc/init.d/samba restart&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;test it out with another computer!&lt;/p&gt;
-
-&lt;p&gt;##Transmission-Daemon&lt;/p&gt;
-
-&lt;p&gt;add the transmission-daemon user to the group of your default user:
-&lt;code&gt;sudo usermod -a -G debian-transmission pi&lt;/code&gt; , now, create some folders and add the proper permission:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;mkdir ~/share/complete&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;mkdir ~/share/incomplete&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;sudo chmod 770 ~/share/complete&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;sudo chmod 770 ~/share/incomplete&lt;/code&gt;&lt;br /&gt;
-then make sure to have the configs generated by the daemon, let&amp;rsquo;s start and stop it:
-&lt;code&gt;sudo service transmission-daemon start&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;sudo service transmission-daemon stop&lt;/code&gt;&lt;br /&gt;
-now modify transmission config:
-&lt;code&gt;sudo nano /etc/transmission-daemon/settings.json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;change the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;download-dir: /home/pi/share/complete&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;incomplete-dir: /home/pi/share/incomplete&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;incomplete-dir-enabled: true&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;peer-port-random-on-start: true&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;rpc-password: &amp;lt;password&amp;gt;&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;rpc-username: &amp;lt;username&amp;gt;&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;rpc-whitelist-enabled: false&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;now start the daemon again, with &lt;code&gt;sudo service transmission-daemon start&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;you can view your transmission daemon via webclient, just open &lt;a href=&#34;http://raspberrypi.local:9091/transmission/web/&#34;&gt;http://raspberrypi.local:9091/transmission/web/&lt;/a&gt; from your browser and log in with the credentials you given in the config!
-##Python, pip, and virtualenv&lt;/p&gt;
-
-&lt;p&gt;Now we are going to set up pip and virtualenv, because we are going to need them for 2 pieces of software that will do almost all the magic.
-install pip with &lt;code&gt;sudo easy_install pip&lt;/code&gt; , then virtualenv with &lt;code&gt;sudo pip install virtualenv&lt;/code&gt;.
-Don&amp;rsquo;t forget to install transmission-rpc, so you can view your torrents from clients such transmission-GUI or transdroid
-&lt;code&gt;sudo pip install transmissionrpc&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;###What is virtualenv and why you always should use it&lt;/p&gt;
-
-&lt;p&gt;Virtualenv it&amp;rsquo;s a tool that lets you create standalone python enviroments, what does that means? It means that if you are going to download a python software that has a lot of dependencies, and you are afraid about versioning and clean install, you can have an enviroment completely clean to use it just for your software, so you won&amp;rsquo;t have unnecessary libraries and modules on your default python folder, and when you are done with your software, you can easily remove your enviroment (a simple folder) and have all the dependencies deleted from your filesystem. If you are still confuse, read &lt;a href=&#34;http://simononsoftware.com/virtualenv-tutorial/&#34;&gt;this&lt;/a&gt; and &lt;a href=&#34;http://iamzed.com/2009/05/07/a-primer-on-virtualenv/&#34;&gt;this&lt;/a&gt;, i&amp;rsquo;m sure you are going to love virtualenv.&lt;/p&gt;
-
-&lt;p&gt;##Flexget&lt;/p&gt;
-
-&lt;p&gt;ok, now that we have virtualenv, create one env for flexget with &lt;code&gt;virtualenv env/flexget&lt;/code&gt; and now we can use the activate script to enter the enviroment.
-&lt;code&gt;source ./env/flexget/bin/activate&lt;/code&gt; from now on, we are in the flexget enviroment, and we can safely install flexget from here with pip: &lt;code&gt;pip install flexget&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Flexget is a great piece of software that handles rss feeds, we are going to use it with the feed generated by &lt;a href=&#34;http://showrss.info/&#34;&gt;http://showrss.info/&lt;/a&gt; to have our seris downloaded automatically when they are out. Create an account on showrss, add some seris, then click on &amp;ldquo;feeds&amp;rdquo; and generate the url, copy it somewhere and now let&amp;rsquo;s go back to our raspberrypi.
-create .flexget folder and a config inside.
-&lt;code&gt;mkdir ~/.flexget&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;nano ~/.flexget/config.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;and write here your tasks,you can learn more about tasks &lt;a href=&#34;http://flexget.com/wiki/Cookbook&#34;&gt;here&lt;/a&gt;.
-i use this task to download every 6 hours torrents given by my showrss account, and then sorts in the TV folder. Pretty neat uh?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lang-yaml&#34;&gt;tasks:
-  task-a:
-    rss: &amp;lt;put here generated url&amp;gt;
-    all_series: yes
-    transmission:
-      host: localhost
-      port: 9091
-      username: pi
-      password: &amp;lt;transmission-password&amp;gt;
-      path: /home/pi/share/TV/{{series_name}}/Season {{series_season}}
-      addpaused: no
-    seen: yes
-
-schedules:
-  - tasks: [task-a]
-    interval:
-      hours: 6
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This task will look every 6 hours if there is any torrent that i haven&amp;rsquo;t download on my generated feed rss from showrss. You can extend or modify this task to do complex things, sky is the limit!&lt;/p&gt;
-
-&lt;p&gt;###Crontab flexget&lt;/p&gt;
-
-&lt;p&gt;If you want that flexget starts with the pi, add to your crontab your flexget daemon:
-&lt;code&gt;crontab -e&lt;/code&gt;&lt;br /&gt;
-add this line at the end of file:
-&lt;code&gt;@reboot /home/pi/env/flexget/bin/flexget daemon start&lt;/code&gt;&lt;br /&gt;
-save and close.&lt;/p&gt;
-
-&lt;p&gt;##Enjoy&lt;/p&gt;
-
-&lt;p&gt;Now you have a full torrent-box with an auto-downloader for your latest show, amazing right? You can do a lot more, i&amp;rsquo;ll probably write another blog post or maybe extend this with auto-download subtitles and other amazing things, stay tuned!&lt;/p&gt;
-</description>
+      <description>Hello folks! Today english post (my first one) , we are going to build a simple torrent-box with the raspberry pi, an old hard drive and a little bit of GNU/Linux magic!
+Boot up and update raspbian First off, make sure to have a fresh clean install of raspbian, just in case something goes wrong, you can debug these steps and see what&amp;rsquo;s wrong, instead of remember months of tweaking and hacking on an old installation.</description>
     </item>
     
     <item>
@@ -380,181 +46,8 @@ save and close.&lt;/p&gt;
       <pubDate>Mon, 09 Feb 2015 02:17:51 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/go-crawler/</guid>
-      <description>
-
-&lt;p&gt;Iniziamo l&amp;rsquo;anno con un progettino semplice semplice per impratichirsi con
-&lt;a href=&#34;http://golang.org/&#34;&gt;golang&lt;/a&gt; , un linguaggio creato da google che permette un esperienza estremamente flawless durante la scrittura del codice e una velocità impressionante, tant&amp;rsquo;è che molte aziende stanno migrando i propri servizi riscrivendoli in go.&lt;/p&gt;
-
-&lt;p&gt;Quello che avevo in mente era creare un sito usando &lt;a href=&#34;https://www.polymer-project.org/&#34;&gt;Polymer&lt;/a&gt; come frontend e go in backend, che dato un URL parsi tutti i link che trovi all&amp;rsquo;interno e lo mostri sotto forma di grafo (precisamente albero) , decidendo quantità di nodi,~~ e anche quanto andare in profondità durante il crawl degli URL.~~&lt;/p&gt;
-
-&lt;p&gt;Il progetto lo trovate su &lt;a href=&#34;https://github.com/blackdev1l/go-crawler&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&#34;analisi-del-problema&#34;&gt;Analisi del problema&lt;/h1&gt;
-
-&lt;p&gt;Il problema non è dei più difficili, ho suddiviso il progetto in 2 grandi sotto-problemi&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Front-end&lt;/li&gt;
-&lt;li&gt;Back-end&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;L&amp;rsquo;idea era quella di avere un webserver in go che attraverso un HTTP REQUEST  ricevesse l&amp;rsquo;url e ritornasse in response sottoforma di json il grafo da poi visualizzare attraverso la libreria &lt;a href=&#34;http://sigmajs.org/&#34;&gt;sigma.js&lt;/a&gt; .&lt;/p&gt;
-
-&lt;h2 id=&#34;front-end&#34;&gt;Front-end&lt;/h2&gt;
-
-&lt;p&gt;Polymer è un framework scritto da google che attraverso web components permette di creare bellissime UI con l&amp;rsquo;utilizzo di elementi predefiniti  e la creazione di nuovi.
-Ah, e tutto in Material Design.&lt;/p&gt;
-
-&lt;p&gt;inanzitutto bisogna scaricare in locale Polymer, io ho usato bower, il quale mi permette di gestire anche eventuali dipendenze senza uscir matto, dopo di che importare gli elementi nel file .html
-```prettyprint lang-html
-    &lt;!-- 2. Load the component using an HTML Import --&gt;
-    &lt;link rel=&#34;import&#34; href=&#34;bower_components/paper-input/paper-input.html&#34;&gt;
-    &lt;link rel=&#34;import&#34; href=&#34;bower_components/core-header-panel/core-header-panel.html&#34;&gt;
-    &lt;link rel=&#34;import&#34; href=&#34;bower_components/core-toolbar/core-toolbar.html&#34;&gt;
-    &lt;link rel=&#34;import&#34; href=&#34;bower_components/paper-button/paper-button.html&#34;&gt;
-    &lt;link rel=&#34;import&#34; href=&#34;bower_components/ajax-form/ajax-form.html&#34;&gt;
-    &lt;link rel=&#34;import&#34; href=&#34;bower_components/paper-slider/paper-slider.html&#34;&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-dopo aver dato un occhiata alla documentazione (potevi fare di meglio google, ma va bene così) ho creato una bar fissata in top, un paper-input (per l&#39;inserimento dell&#39;url) , e due paper-slider per la quantità dei nodi e profondità del grafo. 
-
-La documentazione consiglia di utilizzare l&#39;element [ajax-form](http://garstasio.github.io/ajax-form/components/ajax-form/) per l&#39;invio dei dati attraverso paper-input, è molto facile da utilizzare e attraverso essa sono riuscito con semplicitià a inviare la request, ricevere e utilizzare il response. 
-
-```prettyprint lang-html
-&amp;lt;form is=&amp;quot;ajax-form&amp;quot; action=&amp;quot;send&amp;quot; method=&amp;quot;post&amp;quot; enctype=&amp;quot;application/json&amp;quot;&amp;gt;
-    &amp;lt;paper-input name=&amp;quot;url&amp;quot; label=&amp;quot;Crawl this url&amp;quot; floatingLabel&amp;gt;&amp;lt;/paper-input&amp;gt;
-    &amp;lt;div id=&amp;quot;button&amp;quot;&amp;gt;
-        &amp;lt;paper-button raised id=&amp;quot;submitButton&amp;quot;&amp;gt;Submit&amp;lt;/paper-button&amp;gt;
-    &amp;lt;/div&amp;gt;
-    &amp;lt;paper-slider id=&amp;quot;slider&amp;quot; pin min=&amp;quot;5&amp;quot; max=&amp;quot;50&amp;quot; name=&amp;quot;number&amp;quot;&amp;gt;&amp;lt;/paper-slider&amp;gt;
-&amp;lt;/form&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Per quanto riguarda la parte in java script
-```prettyprint lang-js
-  &lt;script&gt;
-  var s = new sigma(document.getElementById(&amp;lsquo;container&amp;rsquo;));
-  document.getElementById(&amp;lsquo;submitButton&amp;rsquo;).addEventListener(&amp;lsquo;click&amp;rsquo;, function() {
-  document.forms[0].submit();
-  });&lt;/p&gt;
-
-&lt;p&gt;document.forms[0].addEventListener(&amp;lsquo;submitted&amp;rsquo;, function(event) {
-    var data = JSON.parse(event.detail.responseText);
-    console.log(data);
-    s.graph.read(data)
-    s.refresh();
-    s.graph.clear()
-   });&lt;/p&gt;
-
-&lt;p&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-
-Così ogni volta che premo submit manda i dati, attende che vengono parsati dal server scritto in go, al trigger del &amp;quot;submitted&amp;quot; (quando i dati vengono ricevuti) la libreria sigma si aggiorna con il grafo ricevuto in formato json. Si puo&#39; quindi inserire l&#39;url o modificare i nodi e clickare submit senza dover aggiornare la pagina o creare qualche tipo di blocco. 
-Ma ora guardiamo cosa c&#39;è sotto il &amp;quot;cofano&amp;quot;. 
-
-
-##Back-end
-
-Scrivere web server in go grazie alle sue librerie std è davvero una favola. Ci si impiega letteralmente poche righe di codice per poter avere un semplice webserver che mostra un Hello World. 
-direttamente dalla documentazione ufficiale: 
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;package main&lt;/p&gt;
-
-&lt;p&gt;import (
-    &amp;ldquo;fmt&amp;rdquo;
-    &amp;ldquo;net/http&amp;rdquo;
-)&lt;/p&gt;
-
-&lt;p&gt;func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, &amp;ldquo;Hi there, I love %s!&amp;rdquo;, r.URL.Path[1:])
-}&lt;/p&gt;
-
-&lt;p&gt;func main() {
-    http.HandleFunc(&amp;ldquo;/&amp;rdquo;, handler)
-    http.ListenAndServe(&amp;rdquo;:8080&amp;rdquo;, nil)
-}&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-Fantastico vero? Ho suddiviso in 3 file il progetto
-
-* handlers.go 
-* graph.go
-* main.go
-
-Il primo gestisce le richieste, solo 2, quella per il root path e quindi static files e la richiesta /send che viene usata per ricevere l&#39;url e il numero dei nodi e ritornare un json con tutti i link trovati da quell&#39;url. 
-
-Intanto guardiamo Main.go 
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;package main&lt;/p&gt;
-
-&lt;p&gt;import (
-    &amp;ldquo;github.com/gorilla/mux&amp;rdquo;
-    &amp;ldquo;log&amp;rdquo;
-    &amp;ldquo;math/rand&amp;rdquo;
-    &amp;ldquo;net/http&amp;rdquo;
-    &amp;ldquo;time&amp;rdquo;
-)&lt;/p&gt;
-
-&lt;p&gt;func main() {&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;r := mux.NewRouter()
-r.HandleFunc(&amp;quot;/&amp;quot;, Index)
-r.HandleFunc(&amp;quot;/send&amp;quot;, Send)
-r.PathPrefix(&amp;quot;/&amp;quot;).Handler(http.FileServer(http.Dir(&amp;quot;./www/&amp;quot;)))
-http.Handle(&amp;quot;/&amp;quot;, r)
-
-log.Fatal(http.ListenAndServe(&amp;quot;:8080&amp;quot;, r))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-Per questo progettino, ho voluto provare delle librerie esterne, precisamente il mux del framework gorilla. 
-la riga `r.PathPrefix(&amp;quot;/&amp;quot;).Handler(http.FileServer(http.Dir(&amp;quot;./www/&amp;quot;)))` ci permette di servire i file statici dentro la cartella `./www/`. 
-
-In graph.go Ho inserito le strutture dati del grafo. Ho preferito spezzarle in 3 perchè mi veniva comodo in seguito poter distinguerle, anche se non era necessario. 
-
-le 3 strutture dati sono le seguenti: 
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;type Edge struct {
-    Id     string &lt;code&gt;json:&amp;quot;id&amp;quot;&lt;/code&gt;
-    Source string &lt;code&gt;json:&amp;quot;source&amp;quot;&lt;/code&gt;
-    Target string &lt;code&gt;json:&amp;quot;target&amp;quot;&lt;/code&gt;
-}&lt;/p&gt;
-
-&lt;p&gt;type Graph struct {
-    Url   string  &lt;code&gt;json:&amp;quot;-&amp;quot;&lt;/code&gt;
-    Child []*Node &lt;code&gt;json:&amp;quot;nodes,omitempty&amp;quot;&lt;/code&gt;
-    Edges []*Edge &lt;code&gt;json:&amp;quot;edges,omitempty&amp;quot;&lt;/code&gt;
-}&lt;/p&gt;
-
-&lt;p&gt;type Node struct {
-    Id    string &lt;code&gt;json:&amp;quot;id,omitempty&amp;quot;&lt;/code&gt;
-    X     int    &lt;code&gt;json:&amp;quot;x&amp;quot;&lt;/code&gt;
-    Y     int    &lt;code&gt;json:&amp;quot;y&amp;quot;&lt;/code&gt;
-    Size  int    &lt;code&gt;json:&amp;quot;size&amp;quot;&lt;/code&gt;
-    Label string &lt;code&gt;json:&amp;quot;label,omitempty&amp;quot;&lt;/code&gt;
-}
-```&lt;/p&gt;
-
-&lt;p&gt;quelle che vedete a destra delle variabili, sono tag, permettono di identificare durante il Marshal alcune utili proprietà. Esse mi permettono di Esternalizzare le variabili all&amp;rsquo;interno della struttura dati ma allo stesso tempo avere nel json dopo il marshal tutte le variabili in minuscolo, il tag &lt;code&gt;omitempty&lt;/code&gt; come da nome, permette di omettere dal json le variabili dichiarate nil o 0.
-il tag &lt;code&gt;-&lt;/code&gt; invece, omette ogni caso dal marshal quella variabile.&lt;/p&gt;
-
-&lt;p&gt;Ci sarebbe molto altro da dire riguardo alle implementazioni, ma preferisco lasciare a voi il gusto di leggere il codice e imparare questo fantastico linguaggio.&lt;/p&gt;
-
-&lt;p&gt;##Resoconto&lt;/p&gt;
-
-&lt;p&gt;Golang è bellissimo. Ti permette di scrivere codice in modo semplice e allo stesso tempo ordinato, con prestazioni elevatissime (ricordiamo che è un linguaggio compilato) , le librerie standard sono ottime, e ci sono &lt;a href=&#34;https://golang.org/doc/cmd&#34;&gt;tool&lt;/a&gt; di cui non vi ho parlato che vi semplificano di molto la vita.&lt;/p&gt;
-
-&lt;p&gt;Buon coding.&lt;/p&gt;
-</description>
+      <description>Iniziamo l&amp;rsquo;anno con un progettino semplice semplice per impratichirsi con golang , un linguaggio creato da google che permette un esperienza estremamente flawless durante la scrittura del codice e una velocità impressionante, tant&amp;rsquo;è che molte aziende stanno migrando i propri servizi riscrivendoli in go.
+Quello che avevo in mente era creare un sito usando Polymer come frontend e go in backend, che dato un URL parsi tutti i link che trovi all&amp;rsquo;interno e lo mostri sotto forma di grafo (precisamente albero) , decidendo quantità di nodi,~~ e anche quanto andare in profondità durante il crawl degli URL.</description>
     </item>
     
     <item>
@@ -563,201 +56,9 @@ il tag &lt;code&gt;-&lt;/code&gt; invece, omette ogni caso dal marshal quella va
       <pubDate>Sun, 02 Nov 2014 22:15:08 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/rails-rumble/</guid>
-      <description>&lt;p&gt;Salve a tutti, qualche settimana fa ho partecipato all&amp;rsquo;edizione di quest&amp;rsquo;anno della &lt;a href=&#34;http://railsrumble.com/&#34;&gt;Rails Rumble&lt;/a&gt; , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&amp;rsquo;inizio.&lt;/p&gt;
-
-&lt;p&gt;##Cos&amp;rsquo;è:&lt;/p&gt;
-
-&lt;p&gt;Rails Rumble è un &lt;a href=&#34;http://en.wikipedia.org/wiki/Hackathon&#34;&gt;hackathon&lt;/a&gt; online in cui si forma un team di &amp;ldquo;creativi&amp;rdquo; per finire in un prestabilito lasso di tempo un progetto.
-Per la Rails Rumble il tema principale è stato l&amp;rsquo;utilizzo del web framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; , col quale in 48 ore bisognava produrre una web app / sito web. Il limite dei team era di 4 persone.&lt;/p&gt;
-
-&lt;p&gt;ho trovato il team su reddit, precisamente in /r/ruby (o /r/rails?) , 2 americani e un inglese, più o meno tutti sullo stesso livello di abilità, essendo io alle prime armi con Rails all&amp;rsquo;inizio della gara ho deciso di occuparmi del lato backend della web app.&lt;/p&gt;
-
-&lt;p&gt;##Cosa abbiamo fatto:
-###World Spotlight&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;A new way to explore the world we live in, making it feel just a little bit smaller as you explore countries on a world map stage. Data collected from Youtube, Flickr, Twitter and more is used to present a small snapshot of a countries current moment in digital space.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;L&amp;rsquo;idea era quella di dare uno scorcio sul &amp;ldquo;Mondo&amp;rdquo;, offrendo notizie varie su un preciso paese selezionato attraverso una mappa, una cosa molto semplice e d&amp;rsquo;impatto.
-Il mio lavoro era quindi quello di fornire le informazioni sotto forma di dati, queste informazioni erano principalmente 4: Trends di twitter, News locali, informazioni sul meteo e della valuta, video più visitati su youtube nel paese scelto e, in più, una immagine rappresentante il paese come background per la mappa. Per fare ciò avevo bisogno di prendere questi dati dai siti che maggiormente coprivano i corrispettivi task e fare lo &lt;a href=&#34;http://en.wikipedia.org/wiki/Web_scraping&#34;&gt;scraping&lt;/a&gt; delle informazione in base  al paese scelto. Siccome nel team non ero l&amp;rsquo;unico a lavorare sul backend scelsi di lavorare sulle immagini in background, le news e twitter.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;NB: I seguenti pezzi di codice sono stati scritti tra le 2 di notte e le 8 del mattino, di fretta e con solo la voglia di avere qualcosa di funzionante, saranno tutte quasi sicuramente soluzioni inefficienti, ma con solo 48h di tempo non potevo permettermi di pensare alla soluzione ottimale e/o ottimizare il codice.&lt;/strong&gt;
-###Immagine in background
-prima di tutto ho creato una classe base così da poter snellire un pelino il codice, tutte le future classi ereditano da questa classe:&lt;/p&gt;
-
-&lt;p&gt;```prettyprint lang-ruby
-class Scraper
-   attr_accessor :url, :location&lt;/p&gt;
-
-&lt;p&gt;def initialize(name)
-    @location = name
-   end&lt;/p&gt;
-
-&lt;p&gt;def scrapeUrl(url)
-    doc = Nokogiri::HTML(open(url))
-    return doc
-  end&lt;/p&gt;
-
-&lt;p&gt;def scrapeObj(url)
-    doc = Nokogiri::XML(url)
-    return doc
-  end
-end&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-Per l&#39;immagine in background mi sono affidato a flickr e le sue api, volevo che per ogni paese ci fosse la possibilità di avere un immagine a &amp;quot;tema&amp;quot;, per fare ciò ho deciso di utilizzare una [gem](http://guides.rubygems.org/what-is-a-gem/) estremamente utile per quanto riguarda lo scraping su ruby: [nokogiri](http://www.nokogiri.org). 
-nokogiri permette il [parsing](http://en.wikipedia.org/wiki/Parsing) delle informazioni di qualsiasi documento html e xml, permettendomi così di usufruire delle api di flickr a pieno. L&#39;idea era di prendere una foto attraverso la ricerca con il nome del paese come parola chiave e possibilmente una foto ad alta risoluzione (e possibilmente avere la
-risoluzione originale).
-```prettyprint lang-ruby
-class FlickrScraper &amp;lt; Scraper
-	def getImageUrl()
-		string = &amp;quot;&amp;quot;
-		response = open(&#39;https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;amp;api_key=apikey&amp;amp;privacy_filter=1&amp;amp;safe_search=1&amp;amp;content_type=1&amp;amp;tags=&#39;+location+&#39;&amp;amp;per_page=100&amp;amp;page=1&amp;amp;extras=original_format&amp;amp;format=rest&#39;).read
-		doc = scrapeObj(response)
-		res = doc.xpath(&amp;quot;//photo&amp;quot;)
-		res.each do |rs|
-			id = rs[:id]
-			puts &amp;quot;id is #{id}&amp;quot;
-			sizeGET = open(&#39;https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&amp;amp;api_key=apikey&amp;amp;&amp;amp;photo_id=&#39;+id+&#39;&amp;amp;format=rest&#39;)
-			docSize = scrapeObj(sizeGET)
-			docSizePath = docSize.xpath(&amp;quot;//size&amp;quot;)
-			puts docSizePath.count
-			docSizePath.each do |dsp|
-				if(dsp[:label] == &#39;Original&#39;)
-					string = dsp[:source]
-					puts &amp;quot;string is #{string}&amp;quot;
-					return string
-				end
-			end
-		end
-		puts &amp;quot;Image not found&amp;quot;
-		return 1
-	end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Questa classe ha un unica funzione che attraverso le api di flickr ottiene una serie di link alle immagini, essa ritorna il link alla prima immagine che trova con il formato originale disponibile.
-essendo di solito il formato originale molto grande, abbiamo pensato di inserire un video di nuvole che si muovono nell&amp;rsquo;homepage mentre si aspetta che l&amp;rsquo;utente scelga il paese, e per non far vedere il caricamente abbiamo inserito un  fade effect, cosìcchè da non mostrare gradualmente la foto ma solo dopo averla caricata completamente, stessa cosa da una foto all&amp;rsquo;altra.
-Da notare il doppio ciclo uno dentro l&amp;rsquo;altro che nel worst case porterebbe a un costo di ben O(n^n) , ora non ho studiato molto statistica, ma prima di avere un worst case del genere con il database fotografico di flickr penso che ne passerà di tempo :)&lt;/p&gt;
-
-&lt;p&gt;###News
-Per quanto riguarda le news, considerando che google avesse chiuso l&amp;rsquo;accesso alle sue api per google news, decidemmo di utilizzare un &lt;a href=&#34;http://www.faroo.com&#34;&gt;motore di ricerca&lt;/a&gt; semi sconosciuto, ma che con le sue api immediate e di facile utilizzo ha dato una grande mano nel concludere questo task.&lt;/p&gt;
-
-&lt;p&gt;```prettyprint lang-ruby
-class NewsScraper &amp;lt; Scraper
-    def getNews()
-        doc = scrapeUrl(&amp;ldquo;&lt;a href=&#34;http://www.faroo.com/api?q=#{location}&amp;amp;start=1&amp;amp;length=5&amp;amp;l=en&amp;amp;src=news&amp;amp;f=xml&amp;amp;key=lBbetYupJAk2n8scJmiKTVDlNrw_&amp;quot;&#34;&gt;http://www.faroo.com/api?q=#{location}&amp;amp;start=1&amp;amp;length=5&amp;amp;l=en&amp;amp;src=news&amp;amp;f=xml&amp;amp;key=lBbetYupJAk2n8scJmiKTVDlNrw_&amp;quot;&lt;/a&gt;)
-        return doc
-    end&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def getCapital()
-    doc = scrapeUrl(&amp;quot;http://en.wikipedia.org/wiki/&amp;quot;+location)
-    #print(doc)
-    doc.xpath(&amp;quot;//Infobox&amp;quot;) do |node|
-        print(node)
-    end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;end&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;la funzione su cui ho lavorato io è la prima, con un semplice scrape delle api ho ottenuto un oggetto contenente link, titolo, una breve descrizione e persino un immagine raffigurativa per l&#39;articolo. Fantastico vero?
-
-###Twitter
-Non sempre le cose vanno come vorresti, con questo task è stato esattamente così. All&#39;inizio si pensava a voler fare una lista dei 10 top trends della nazione selezionata, ma tra infiniti errori e il tempo che inesorabilmente volgeva allo scadere abbiamo optato per una lineare scelta dei top tweets 
-
-```prettyprint lang-ruby
-class TwitterScraper &amp;lt; Scraper
-	include Twitter::Autolink
-	attr_accessor :client
-
-	def initialize(name)
-		@location = name
-		@client = Twitter::REST::Client.new do |config|
-			config.consumer_key        = &amp;quot;consumer_key&amp;quot;
-			config.consumer_secret     = &amp;quot;consumer_secret&amp;quot;
-			config.access_token        = &amp;quot;access_token&amp;quot;
-			config.access_token_secret = &amp;quot;access_token_secret&amp;quot;
-		end
-	end
-
-	def parseJson()
-		json = File.read(Rails::root+&amp;quot;lib/assets/trends_available.json&amp;quot;)
-		return JSON.parse(json)
-	end
-
-	def getTrends()
-		puts &amp;quot;location is #{@location} , looking for WOEID&amp;quot;
-		countryCode = &amp;quot;&amp;quot;
-		locationAvailable = parseJson()
-		locationAvailable.each do |loc|
-			if(loc[&amp;quot;name&amp;quot;].capitalize.to_s == @location.to_s)
-				puts &amp;quot;found!&amp;quot;
-				puts loc[&amp;quot;name&amp;quot;]
-				puts loc[&amp;quot;woeid&amp;quot;]
-				countryCode = loc[&amp;quot;woeid&amp;quot;]
-			end
-		end
-		puts &amp;quot;code is #{countryCode}&amp;quot;
-		trends = client.trends(countryCode)
-		trends.each do |tr|
-			puts tr.name
-		end
-		return trends
-	end
-	
-	def getTweets()
-    puts &amp;quot;waiting on twitter&amp;quot;
-    return @client.search(@location, :result_type =&amp;gt; &amp;quot;recent&amp;quot;).take(6).collect
-	end
-
-	def getCountryCode()
-		res = []
-		countries = parseJson()
-		countries.each do |country|
-			res &amp;lt;&amp;lt; country[&amp;quot;countryCode&amp;quot;]
-		end
-		return res
-	end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Classe un pelino più &lt;em&gt;corposa&lt;/em&gt; rispetto alle altre, purtroppo il rate limit delle api di twitter è stato un problema non indifferente, che ci ha portati a tardare non poco  il completamento di questo task. La funzione getTrends funzionava solo per alcuni paesi, per altri no, non abbiamo indagato molto sul motivo e avevamo deciso di usare la funzione getTweets come &amp;ldquo;toppa&amp;rdquo; se i trends non caricavano.&lt;/p&gt;
-
-&lt;p&gt;##Com&amp;rsquo;è andata:&lt;/p&gt;
-
-&lt;p&gt;dopo aver passato l&amp;rsquo;ultima ora a cercare di sistemare il lato twitter dell&amp;rsquo;app il tempo stava per scadere, ce l&amp;rsquo;avevamo fatta giusto in tempo, mancavano 10 minuti, quando:
-&amp;gt;[10/20/2014 12:49:37 AM] Cameron C.: fuck&lt;br /&gt;
-&amp;gt;[10/20/2014 12:49:40 AM] Cameron C.: I have conflicts&lt;br /&gt;
-&amp;gt;[10/20/2014 12:49:41 AM] Cameron C.: hang on&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.quickmeme.com/img/02/023019c6c3b84097ee6df4a38f58c16d9da2b8954988f074aad24a6cb4861fd5.jpg&#34; alt=&#34;Conflicts everywhere&#34; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;[10/20/2014 12:53:15 AM] Mike R.: guy you have 2 minutes to fix conflicts or im pushing with old api&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://replygif.net/i/1209.gif&#34; alt=&#34;sweatyman&#34; /&gt;
-&amp;gt;[10/20/2014 12:56:54 AM] Mike R.: oh my god&lt;br /&gt;
-&amp;gt;[10/20/2014 12:56:57 AM] Mike R.: conflicts out my ass&lt;/p&gt;
-
-&lt;p&gt;i minuti scadevano e l&amp;rsquo;unica cosa che potevamo fare era un rollback e lasciare solamente i tweets, senza trends (sigh, tutto lavoro sprecato)&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;[10/20/2014 12:57:50 AM] Mike R.: im pushing old api&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Fu l&amp;rsquo;unica cosa che potemmo fare. il deploy fu fatto alle 23:59 UTC, un minuto in più (o forse meno) e saremmo stati squalificati.
-##Post Deploy&lt;/p&gt;
-
-&lt;p&gt;Il sito sembrava  andare bene, tutto funzionava come doveva, eccetto twitter. Il problema non era il codice perchè sia in locale che su box esterne le api funzionavano e  il sito mostrava i top 10 tweets. Quindi cosa poteva essere? Probabilmente heroku o il nostro sito era blacklistato da twitter, cosa che ci ha sicuramente penalizzato tantissimo al momento del judging.&lt;/p&gt;
-
-&lt;p&gt;Alla fine non abbiamo vinto, ma è stato estremamente divertente e ho imparato tantissimo, il team è ancora ben saldo e si pensa già al prossimo hackathon online a cui partecipare, mi è piaciuto moltissimo lavorare in gruppo e trovo che loro siano delle persone fantastiche,
-Se vi ho incuriosito un pochino, vi lascio il link al sito che abbiamo creato in 48 ore per la Rails Rumble, un commento col vostro giudizio mi renderebbe ancora più felice!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://worldspotlight.r14.railsrumble.com/&#34;&gt;http://worldspotlight.r14.railsrumble.com/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Salve a tutti, qualche settimana fa ho partecipato all&amp;rsquo;edizione di quest&amp;rsquo;anno della Rails Rumble , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&amp;rsquo;inizio.
+##Cos&amp;rsquo;è:
+Rails Rumble è un hackathon online in cui si forma un team di &amp;ldquo;creativi&amp;rdquo; per finire in un prestabilito lasso di tempo un progetto. Per la Rails Rumble il tema principale è stato l&amp;rsquo;utilizzo del web framework Ruby on Rails , col quale in 48 ore bisognava produrre una web app / sito web.</description>
     </item>
     
     <item>
@@ -766,67 +67,11 @@ Se vi ho incuriosito un pochino, vi lascio il link al sito che abbiamo creato in
       <pubDate>Thu, 23 Oct 2014 16:58:38 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/basi-di-dati-parte-1-b-1234567/</guid>
-      <description>&lt;p&gt;###Nozioni&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Istanza di entità:&lt;/strong&gt; Cosa o persona che esiste, della quale vogliamo registrare  gli attributi e che puo&amp;rsquo; essere chiaramente indentificata in modo da poterla distringuere dalle altre.&lt;br /&gt;
-&lt;strong&gt;Istanza di relazione (associazione):&lt;/strong&gt; Fatto che descrive un&amp;rsquo;azione e che stabilisce legami tra istanza di entità.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Classi:&lt;/strong&gt; Insieme di &lt;em&gt;istanze&lt;/em&gt; considerate dello stesso &lt;em&gt;tipo&lt;/em&gt;.&lt;br /&gt;
-&lt;strong&gt;Proprietà (o attributi):&lt;/strong&gt; fatti che descrivono le caratteristiche delle istanze di
-entità e le caratteristiche delle istanze di associazione.&lt;br /&gt;
-&lt;strong&gt;Aggregazione:&lt;/strong&gt; Permette di definire il tipo delle istanze e delle classi con &lt;em&gt;aggregazioni&lt;/em&gt; di proprietà comuni.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;###Vincoli di Integrità
-* ogni istanza è un elemento in qualche classe definita
-* gli elementi di una classe sono dello stesso tipo, da diversi tra loro
-* Una classe contiene tutti e soli gli elementi che rappresentano entità dello stesso tipo&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;###Modello E-R
-&lt;strong&gt;Simbolo grafico per rappresentare una entità&lt;/strong&gt;
-&lt;img src=&#34;http://i.imgur.com/7Em2h3a.png&#34; alt=&#34;Modello Entità&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Simbolo grafico per rappresentare un&amp;rsquo;associazione&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/Untitled-drawing--1-.png&#34; alt=&#34;Modello Associazione&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;###Proprietà&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;scalare (ad un solo valore)
-&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/propiert-.png&#34; alt=&#34;scalare&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;Multipla (sono ammessi &lt;em&gt;n&lt;/em&gt; valori)
-&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/multiple.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;Composta
-&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/multiple--2--1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;Multipla composta
-&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/multiplecomposta.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;Opzionale
-&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/optional.png&#34; alt=&#34;&#34; /&gt; Alternativa alla proprietà opzionale è quella &lt;strong&gt;Totale&lt;/strong&gt;, per la quale bisognerà specificare separatamente dello schema l&amp;rsquo;obbligatorietà della presenza di valore.&lt;/li&gt;
-&lt;li&gt;Costante&lt;br /&gt;
-I valori non possono essere cambiati, in alternativa la properietà è &lt;strong&gt;modificabile&lt;/strong&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;calcolata&lt;br /&gt;
-Il valore è calcolato con un algoritmo, in alternativa si dice &lt;strong&gt;esplicita&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Unica&lt;br /&gt;
-il valore è diverso per ogni istanza, in alternativa si dice &lt;strong&gt;generica&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Temporale
-
-&lt;ul&gt;
-&lt;li&gt;modifiche che sono memorizzate&lt;/li&gt;
-&lt;li&gt;periodicamente (snapshot)&lt;/li&gt;
-&lt;li&gt;registrando le variazioni ed il tempo di viariazione&lt;/li&gt;
-&lt;li&gt;altro&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Chiave&lt;br /&gt;
-&lt;img src=&#34;https://blackdev1l.github.io/content/images/2014/Oct/chiave.png&#34; alt=&#34;&#34; /&gt;
-identifica in maniera univoca la singola istanza di &lt;strong&gt;entità&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>###Nozioni
+Istanza di entità: Cosa o persona che esiste, della quale vogliamo registrare gli attributi e che puo&amp;rsquo; essere chiaramente indentificata in modo da poterla distringuere dalle altre.
+Istanza di relazione (associazione): Fatto che descrive un&amp;rsquo;azione e che stabilisce legami tra istanza di entità.
+Classi: Insieme di istanze considerate dello stesso tipo.
+Proprietà (o attributi): fatti che descrivono le caratteristiche delle istanze di entità e le caratteristiche delle istanze di associazione.</description>
     </item>
     
     <item>
@@ -835,27 +80,7 @@ identifica in maniera univoca la singola istanza di &lt;strong&gt;entità&lt;/st
       <pubDate>Sun, 21 Sep 2014 17:45:38 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/irc-bot/</guid>
-      <description>
-
-&lt;p&gt;Salve a tutti! Nelle settimane passate ho scritto un piccolo irc bot insieme a un mio amico in java per un canale tra &amp;ldquo;amici&amp;rdquo; appoggiandoci su delle api per il lato network. L&amp;rsquo;idea generale era implementare i comandi più &amp;ldquo;usati&amp;rdquo; da un bot, cioè !quote youtube parser e magari !seen. Dopo di che &lt;del&gt;abbiamo&lt;/del&gt; ha pensato di cambiare e rendere il bot modulare (cosa che sta pensando a sviluppare lui data la mia scarsa conoscenza di design pattern e affini)&lt;/p&gt;
-
-&lt;h3 id=&#34;cosa-abbiamo-implementato-fin-ora&#34;&gt;cosa abbiamo implementato fin ora&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;!quote e affini&lt;/li&gt;
-&lt;li&gt;link parser in regex (rubato da stackoverflow)&lt;/li&gt;
-&lt;li&gt;interfaccia per modularizzare il bot&lt;/li&gt;
-&lt;li&gt;caricamento dei settings tramite file xml&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;gestione-dei-quote&#34;&gt;Gestione dei quote&lt;/h3&gt;
-
-&lt;p&gt;I quote vengono gestiti tramite un listener a parte, essi sono salvati su un mongodb in remoto, mongodb è un database nosql facile da usare e con molto potenziale. Per quello che dobbiamo fare non ci serve nulla di scalabile o chissà cosa in termini di computazioni, alla fine son solo 4 quote.&lt;/p&gt;
-
-&lt;h3 id=&#34;deployment&#34;&gt;Deployment&lt;/h3&gt;
-
-&lt;p&gt;Ancora dobbiamo rilasciare il bot su una vps per renderlo stabile e usabile. Ci manca ancora qualche accortezza e presto potremo usarlo.&lt;/p&gt;
-</description>
+      <description>Salve a tutti! Nelle settimane passate ho scritto un piccolo irc bot insieme a un mio amico in java per un canale tra &amp;ldquo;amici&amp;rdquo; appoggiandoci su delle api per il lato network. L&amp;rsquo;idea generale era implementare i comandi più &amp;ldquo;usati&amp;rdquo; da un bot, cioè !quote youtube parser e magari !seen. Dopo di che abbiamo ha pensato di cambiare e rendere il bot modulare (cosa che sta pensando a sviluppare lui data la mia scarsa conoscenza di design pattern e affini)</description>
     </item>
     
     <item>
@@ -864,14 +89,7 @@ identifica in maniera univoca la singola istanza di &lt;strong&gt;entità&lt;/st
       <pubDate>Thu, 14 Aug 2014 18:36:17 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/one-week-in-the-deep-south/</guid>
-      <description>&lt;p&gt;Dopo una lontananza di ben 2 anni sono ritornato nella mia terra natia, crotone,insieme alla mia ragazza portawai.
-Il viaggio all&amp;rsquo;andata è stato abbastanza tranquillo, la mattina dopo ero abbastanza carico da poter andare direttamente a mare. La voglia di reincontrare i vecchi amici era tanta, infatti da quando avevo deciso di scendere avevo questa fissa in testa e ogni giorno pensavo al viaggio e alla settimana che avrei passato giù.
-Crotone è in lenta agonia, no è cambiato nulla da quando me ne sono andato, negozi sempre più chiusi e vuoti, molte più rotonde devo dire, un mare sempre più sporco (neanche di quello possiamo vantarci più..) e tanta tanta tristezza. Devo dire la verità: Mi sarebbe piaciuto rimanere più a lungo, anche perchè quì a modena non sto combinando nulla, dovrei darmi una seria scrollata e cercare di far qualcosa. Per il resto è stato bello andare a mare con lin, è stato bello finalmente mangiare qualcosa di buono, è stato bello rivedere tutti quanti.&lt;/p&gt;
-
-&lt;p&gt;Speriamo l&amp;rsquo;anno prossimo di poter rimanere un po&amp;rsquo; più a lungo.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;per il futuro, devo scrivere subito dopo il viaggio e non una settimana&lt;/em&gt;&lt;/p&gt;
-</description>
+      <description>Dopo una lontananza di ben 2 anni sono ritornato nella mia terra natia, crotone,insieme alla mia ragazza portawai. Il viaggio all&amp;rsquo;andata è stato abbastanza tranquillo, la mattina dopo ero abbastanza carico da poter andare direttamente a mare. La voglia di reincontrare i vecchi amici era tanta, infatti da quando avevo deciso di scendere avevo questa fissa in testa e ogni giorno pensavo al viaggio e alla settimana che avrei passato giù.</description>
     </item>
     
     <item>
@@ -880,59 +98,8 @@ Crotone è in lenta agonia, no è cambiato nulla da quando me ne sono andato, ne
       <pubDate>Thu, 17 Jul 2014 16:45:06 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/arch-linux-on-main/</guid>
-      <description>&lt;p&gt;Salve, 3 giorni fa ho deciso di formattare tutto e installare arch linux sul main pensando di poter finalmente rimpiazzare windows (obbligato ad usarlo per videogiocare) con il mio sistema operativo preferito.&lt;/p&gt;
-
-&lt;p&gt;Dopo un veloce &lt;code&gt;dd if=\arch.iso of=/dev/sdc BS=4M&lt;/code&gt; ero pronto alla installazione.
-Io ho un hard disk da 2T che uso come disco dati e un ssd per il sistema operativo da 128gb. Mai avuti problemi di spazio o altro, con la wiki sul portatile e la penna bootata sul main parto spedito per l&amp;rsquo;installazione&lt;/p&gt;
-
-&lt;p&gt;###First big step, first big error.&lt;/p&gt;
-
-&lt;p&gt;Mai, mai iniziare un installazione senza prima dare una controllata ai dischi con &lt;code&gt;lsblk&lt;/code&gt; , potreste far dei danni seri.
-Io per questa volta danni seri non ne ho fatti, ma ci sono andato vicino.
-Dopo aver bootato via usb sulla distro di arch per iniziare l&amp;rsquo;installazione, la prima cosa che ho fatto è stata quella di eliminare la tabella di partizione sul &lt;strong&gt;disco dati&lt;/strong&gt; invece che sull&amp;rsquo;ssd.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;sgdisk --zap-all /dev/sda&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Semplice, pulito, diretto. Peccato che &lt;code&gt;/dev/sda&lt;/code&gt; fosse l&amp;rsquo;hard disk da 2 tera e non l&amp;rsquo;ssd.Primo errore, primo problema.&lt;/p&gt;
-
-&lt;p&gt;###Uefi merda.&lt;/p&gt;
-
-&lt;p&gt;Dopo aver direzionato l&amp;rsquo;installazione verso il disco esatto e aver settato tutto, mi ritrovo nella fase pre-reboot e post-installazione, mi manca solo da installare il Boot Loader. Ecco che mi trovo di nuovo in difficoltà (dopo il calvario per avere il dual boot sul portatile) a cercare di installare arch sotto UEFI. Sarà per le precedenti esperienze ma dopo vari tentativi (per lo più errori di scrittura) sono riuscito a far funzionare &lt;a href=&#34;http://freedesktop.org/wiki/Software/gummiboot/&#34;&gt;gummiboot&lt;/a&gt; e avviare correttamente Arch linux.&lt;/p&gt;
-
-&lt;p&gt;###Ping!&lt;/p&gt;
-
-&lt;p&gt;Internet non va. reboot da penna (non so come mai funziona senza nessun particolare impostazione da pennetta ma da installazione no, ignoranza mia) e per risolvere installo &lt;a href=&#34;https://wiki.archlinux.org/index.php/NetworkManager&#34;&gt;NetworkManager&lt;/a&gt; , dopo un &lt;code&gt;systemctl enable NetworkManager&lt;/code&gt; tutto funziona a meraviglia.&lt;/p&gt;
-
-&lt;p&gt;###Steam on linux&lt;/p&gt;
-
-&lt;p&gt;Tutto felice e pimpante per l&amp;rsquo;installazione avvenuta con successo installo subito un DE (per questa volta &lt;a href=&#34;http://cinnamon.linuxmint.com/&#34;&gt;cinnamon&lt;/a&gt; nell&amp;rsquo;attesa di &lt;a href=&#34;http://www.kde.org/announcements/plasma5.0/&#34;&gt;KDE 5&lt;/a&gt;)
-e i driver open-source ati, dopo di che mi appresto ad installare Steam, eccitato dall&amp;rsquo;idea di provare finalmente una esperienza videoludica decente su linux, l&amp;rsquo;installazione va liscia, apro il terminale e digito velocemente le 5 lettere magiche che evocheranno la macchina a vapore:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;steam&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Black screen, ritorno al Login screen. &lt;strong&gt;WTF?!&lt;/strong&gt;
-Dopo una ricerca non troppo lunga sul forum di arch trovo la soluzione al mio problema,&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;find ~/.local/share/Steam -name &#39;libstdc*.so*&#39; -delete&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;find ~/.local/share/Steam -name &#39;libgcc_s*.so*&#39; -delete&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Avvio steam. Parte. yeah!&lt;/p&gt;
-
-&lt;p&gt;###Ati e Linux&lt;/p&gt;
-
-&lt;p&gt;Che terribile accoppiata. La scheda video con i driver open source crasha random (non dico sotto sforzo, perchè a volte sto solo scrivendo su terminale con nulla sotto in background e crasha, mentre dopo 5 episodi di orange is the new black va liscio come l&amp;rsquo;olio) e sopratutto i driver catalyst sono un fottuto dito in culo da installare (ancora non ci sono riuscito)  , basta solo guardare &lt;a href=&#34;https://wiki.archlinux.org/index.php/Amd_catalyst&#34;&gt;la pagina wiki dei driver&lt;/a&gt; per capire che siamo ancora lontani dall&amp;rsquo;avere un esperienza flawless per quanto riguarda i videogiochi (oppure spendi di più e compri &lt;a href=&#34;http://youtu.be/iYWzMvlj2RQ&#34;&gt;Nvidia&lt;/a&gt;) .&lt;/p&gt;
-
-&lt;p&gt;###Recuperiamo l&amp;rsquo;hard disk da 2T
-Dopo aver risolto ogni problema con calma, mi rimane solo questo, facendo un giro su google (e sulla wiki di Arch, fonte inesauribile di informazioni e soluzioni) trovo un applicazione che fa perfettamente al caso mio: &lt;a href=&#34;http://www.cgsecurity.org/wiki/TestDisk&#34;&gt;testDisk&lt;/a&gt; , questo programma riesce a ricostruire tabelle di partizioni in pochi secondi e con una semplicità disarmante (e io comunque riesco a svaccare tutto non selezionando partizione / settando GPT invece che MBR e spendendo ore per capire cosa non andasse bene) sono riuscito a ottenere l&amp;rsquo;hard disk con tutti i dati ancora li dov&amp;rsquo;erano (alla fin fine ho solo eliminato la tabella, non ho fatto altro)&lt;/p&gt;
-
-&lt;p&gt;###Ok, mi sono divertito, torniamo su Windows&lt;/p&gt;
-
-&lt;p&gt;Dopo aver capito che avere arch con i driver rotti (non mi sono arreso, sto solo riposando per ricominciare a smanettare e risolvere anche questo fastidioso problema) è un po&amp;rsquo; una sola, ma anche che dopo aver speso tutto questo tempo è un peccato formattare, decido di fare un dual boot. Dopo aver scaricato &lt;em&gt;legalmente&lt;/em&gt; da torrent una iso di Win 8.1 decido di creare una partizione dall&amp;rsquo;hard disk di 2T di circa 300 gb e installare li Win 8.1 per poi effettuare Dual Boot. Per ora mi limito a dare la priorità di boot all&amp;rsquo;hard disk da 2T (non ho ancora un vero e proprio dual boot dato che Gummiboot non mi ha rilevato l&amp;rsquo;installazione di windows sul disco dati con tabella in MBR) più avanti vedrò se riesco a risolvere e avere un boot manager che mi faccia scegliere sia win 8.1 che Arch.&lt;/p&gt;
-
-&lt;p&gt;###Conclusione.&lt;/p&gt;
-
-&lt;p&gt;Arch è bello, molto bello. Divertente, potente, ma ancora non puo&amp;rsquo; rimpiazzare pienamente windows. Almeno non se come me si è accaniti videogiocatori oltre che smanettoni. Un dual boot è la scelta migliore, the best of both worlds.&lt;/p&gt;
-</description>
+      <description>Salve, 3 giorni fa ho deciso di formattare tutto e installare arch linux sul main pensando di poter finalmente rimpiazzare windows (obbligato ad usarlo per videogiocare) con il mio sistema operativo preferito.
+Dopo un veloce dd if=\arch.iso of=/dev/sdc BS=4M ero pronto alla installazione. Io ho un hard disk da 2T che uso come disco dati e un ssd per il sistema operativo da 128gb. Mai avuti problemi di spazio o altro, con la wiki sul portatile e la penna bootata sul main parto spedito per l&amp;rsquo;installazione</description>
     </item>
     
     <item>
@@ -941,95 +108,8 @@ Dopo aver risolto ogni problema con calma, mi rimane solo questo, facendo un gir
       <pubDate>Sat, 05 Jul 2014 18:29:31 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/fap-folder-creator-pt1/</guid>
-      <description>
-
-&lt;p&gt;Hello guys, oggi vi parlo di uno &lt;a href=&#34;https://github.com/blackdev1l/Fap-Folder-Creator&#34;&gt;scriptino&lt;/a&gt; in python che sto scrivendo per imparare il linguaggio, incomincio subito a dire che dopo un anno di c++ scrivere del codice in python è come spegnere il cervello e parlare con una persona. Stupidamente facile e immediato.
-Lo script si appoggia (per ora) principalmente su &lt;del&gt;2&lt;/del&gt; 1 libreri&lt;del&gt;e&lt;/del&gt;a: &lt;del&gt;Click e&lt;/del&gt; &lt;a href=&#34;https://github.com/vinta/Haul&#34;&gt;Haul&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;in verità l&amp;rsquo;idea dello script mi è venuto leggendo una &lt;a href=&#34;https://github.com/vinta/awesome-python&#34;&gt;lista di librerie per python&lt;/a&gt; trovata su Reddit, precisamente la libreria &lt;a href=&#34;https://github.com/vinta/Haul&#34;&gt;Haul&lt;/a&gt; mi ha dato l&amp;rsquo;idea di creare un downloader di immagini automatico dai thread di 4chan, mi sembrava un compito molto semplice e allo stesso tempo utile per imparare il linguaggio. Non ho trovato grosse difficoltà, il linguaggio è abbastanza &amp;ldquo;libero&amp;rdquo;, le variabili non sono strettamente tipicizzate e non c&amp;rsquo;è nessuna gestione della memoria, probabilmente meglio se mi fermo qui a descrivere il linguaggio perchè ancora per me è nuovo e non voglio scrivere castronerie.&lt;/p&gt;
-
-&lt;p&gt;Per ora lo script non è interattivo, non prende nessun argomento in input, basta solo avviarlo con &lt;code&gt;python ffc.py&lt;/code&gt; e di seguito chiederà url e dir.
-Principalmente lo script è suddiviso in 3 moduli:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;parsing della pagina e acquisizione dei link immagine&lt;/li&gt;
-&lt;li&gt;Download  di ogni immagine&lt;/li&gt;
-&lt;li&gt;Watch Thread per eventuali immagini uppate dopo l&amp;rsquo;avvio dello script fin quando non viene eliminato il thread (404)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;get-images&#34;&gt;get_images()&lt;/h3&gt;
-
-&lt;p&gt;il primo punto è abbastanza semplice, anche grazie alla libreria a cui mi sono appoggiato, ho creato una funzione che riceve in input l&amp;rsquo;url del thread e ritorna la lista di url delle immagini a risoluzione originale (solo quelle e non le thumbnail)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-prettyprint&#34;&gt;def get_images(url):
-    result = haul.find_images(url, extend=True)
-
-    out = []
-
-    for item in result.image_urls:
-        if &#39;i.4cdn&#39; in item:
-            out.append(item[4:])
-        else:
-            pass
-    return out
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;la prima riga della funzione è il parsing vero e proprio dei link attraverso la libreria Haul, dopo di che ho creato una lista vuota in cui poi andranno solo i link delle immagini originali.
-Il ciclo for cerca tra gli url quelli contenenti la sotto-stringa &amp;ldquo;i.4cdn&amp;rdquo; (sarebbe il cdn di 4chan in cui sono caricati tutte le immagini dei thread, differente dal t.4cdn dove ci si trovano solo le &lt;em&gt;thumbnail&lt;/em&gt; delle immagini) e quindi ottenere solo immagini a risoluzione originale e lasciare le thumbnail nella lista temporanea., dopo di che &amp;ldquo;appendo&amp;rdquo; l&amp;rsquo;url nella lista out partendo soltanto dal 4 carattere in poi (il parser non riesce a copiare bene l&amp;rsquo;inizio dell&amp;rsquo;url) e in fine ritorno la lista con tutti gli url delle immagini.&lt;/p&gt;
-
-&lt;h3 id=&#34;def-download&#34;&gt;def_download()&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-prettyprint&#34;&gt;def download(img_url,filename,dr):
-    img_url = &#39;http://i.&#39;+img_url
-    obj = dr+&#39;/&#39;+filename
-    print(&amp;quot;downloading &amp;quot;+img_url)
-    urlretrieve(img_url,obj)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Con questa funziione scarico una singola immagine, nel main uso un ciclo for pasando ogni singolo link alla funzione cosìcchè posso usarla in seguito per la funzione watch_thread() .&lt;/p&gt;
-
-&lt;p&gt;La funzione è scritta &lt;em&gt;male&lt;/em&gt; con parecchio hardcode ma non ho pensato a un modo migliore, magari in futurò farò un refactoring, ma non penso che mi verrà in mente qualcosa di meglio senza dover cambiare libreria o stravolgere anche get_images().
-Una funzione molto utile ed estremamente facile da utilizzare è &lt;em&gt;&lt;a href=&#34;https://docs.python.org/2/library/urllib.html#urllib.urlretrieve&#34;&gt;urlretrieve()&lt;/a&gt;&lt;/em&gt; la quale mi permette di scaricare qualsiasi oggetto su un sito tramite indirizzo url senza preoccuparmi di altro.&lt;/p&gt;
-
-&lt;h3 id=&#34;watch-thread&#34;&gt;watch_thread()&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-prettyprint&#34;&gt;def watch_thread(time,url,dr):
-    print(&amp;quot;Watching...&amp;quot;)
-    urljson = url_to_json(url)
-
-
-    with contextlib.closing(urllib2.urlopen(urljson)) as j:
-        j_obj = json.load(j)
-
-    img_number = j_obj[&amp;quot;posts&amp;quot;][0][&amp;quot;images&amp;quot;]
-
-    while True:
-        sleep(time)
-        try:
-            with contextlib.closing(urllib2.urlopen(urljson)) as j:
-                j_obj = json.load(j)
-        except urllib2.HTTPError:
-            print(&amp;quot;Thread went 404\n Total image downloaded: &amp;quot; + str(img_number+1))
-            exit(3)
-        else:
-            new_img_number = j_obj[&amp;quot;posts&amp;quot;][0][&amp;quot;images&amp;quot;]
-            if img_number != new_img_number:
-                new_list = get_images(url)
-                filename = new_list[-1].split(&#39;/&#39;)[-1]
-                download(new_list[-1],filename,dr)
-                img_number = new_img_number
-            else:
-                pass
-    return True
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Questa è la funzione più &amp;ldquo;corposa&amp;rdquo; ma anche  quella che rende lo script &amp;ldquo;utile&amp;rdquo; rispetto a un classico down them all. per ora non so se è completamente esente da bug  (simulare una situazione di download passivo di un thread non è difficile ma richiede molto tempo, considerando che i therad su 4chan posso durare giornate o poche ore) .
-Inanzi tutto ho utilizzato un&amp;rsquo;altra funzione delle librerie standard di python che è quella per il parsing dei file &lt;a href=&#34;https://docs.python.org/2/library/json.html&#34;&gt;json&lt;/a&gt;. Ho deciso di utilizzarla per sfruttare le &lt;a href=&#34;https://github.com/4chan/4chan-API&#34;&gt;api di 4chan&lt;/a&gt; e monitorare quante immagini ci sono nel thread, se aumentano (e di conseguenza scaricare l&amp;rsquo;ultima immagine) oppure se il thread è andato 404 (attraverso un try except)&lt;/p&gt;
-
-&lt;p&gt;Un bug che ho notato e che non riesco a risolvere è una chiusura forzata della connessione da parte del server, succede dopo circa 10 minuti che il processo è in idle, ho provato a risolvere chiudendo ogni volta le connessioni con un &lt;code&gt;with contextlib.closing(urllib2.urlopen(urljson)) as j:&lt;/code&gt; ma devo riprovare e vedere se il bug è stato risolto oppure no. Non saprei per cos&amp;rsquo;altro potrebbe avvenire.&lt;/p&gt;
-
-&lt;p&gt;Lo script è ancora in wip e devo lavorare ancora sulla parte CLI e alla gestione dei file e folder (se la cartella dove si vuole scaricare le immagini non è stata creata lo script si pianta)&lt;/p&gt;
-</description>
+      <description>Hello guys, oggi vi parlo di uno scriptino in python che sto scrivendo per imparare il linguaggio, incomincio subito a dire che dopo un anno di c++ scrivere del codice in python è come spegnere il cervello e parlare con una persona. Stupidamente facile e immediato. Lo script si appoggia (per ora) principalmente su 2 1 libreriea: Click e Haul
+in verità l&amp;rsquo;idea dello script mi è venuto leggendo una lista di librerie per python trovata su Reddit, precisamente la libreria Haul mi ha dato l&amp;rsquo;idea di creare un downloader di immagini automatico dai thread di 4chan, mi sembrava un compito molto semplice e allo stesso tempo utile per imparare il linguaggio.</description>
     </item>
     
     <item>
@@ -1038,19 +118,10 @@ Inanzi tutto ho utilizzato un&amp;rsquo;altra funzione delle librerie standard d
       <pubDate>Tue, 29 Apr 2014 19:58:52 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/post-pasqua-processing/</guid>
-      <description>&lt;p&gt;Ok ennesimo post bimestrale giusto per scrivere qualcosa!&lt;/p&gt;
-
-&lt;p&gt;Long story short: un mese e passa di &amp;ldquo;malattia&amp;rdquo;, ogni settimana una diversa, feels bad.&lt;/p&gt;
-
-&lt;p&gt;Spunta fuori ogni tanto qualche persona del passato, incredibile come le persone siano uguali a prima, statica, leggermente diverse ma&amp;hellip; il succo è quello.&lt;/p&gt;
-
-&lt;p&gt;Ho iniziato a lavorare al progettino di &lt;a href=&#34;https://github.com/blackdev1l/Bomberman&#34;&gt;Programmazione 2&lt;/a&gt; e dopo uno sprint iniziale sono subito rimasto bloccato su un problema stupido. Probabilmente ho gestito male la divisione iniziale del progetto, probabilmente è meglio ricominciare tutto d&amp;rsquo;accapo. Questa Domenica sono stato a Formigine con lin e altri colleghi di università a mangiare al &lt;a href=&#34;http://www.tripadvisor.it/Restaurant_Review-g1929770-d5793027-Reviews-RISTORANTE_FUSION_NEST_C_C_sas_di_CHEN_XUEWEI-Formigine_Province_of_Modena_Emili.html&#34;&gt;Nest&lt;/a&gt; , ho mangiato moderatamente (il cibo cinese proprio non mi piace) e dopo al pub per finire in bellezza la serata. Il lunedì di pasquetta (si dice così? Boh!) Lin ha organizzato un pranzo con i suoi amici, abbiamo mangiato in un ristorante cinese (quello vero) a Reggio Emilia, è stato bellissimo. Avevamo una &lt;del&gt;saletta&lt;/del&gt; stanza tutta per noi, con un grande tavolo circolare e una piattaforma girevole al di sopra. La stanza in verità è una sala karaoke (gli asiatici vanno pazzi per il karaoke, non so come mai.) E la piattaforma serve a far roteare i piatti che man mano arrivano. In cina non si usa l&amp;rsquo;ordinare ognuno per se, al contrario si ordina per tutti, quindi i piatti vengono posti su questa piattaforma e man mano che qualcuno vuole qualcosa da mangiare la fa girare per avvicinarsi il piatto della prelibatezza scelta. È un modo molto carino di mangiare e di vedere il pranzo. Lo preferisco a quello occidentale. Comunque dopo tante bottiglie di birra e aver mangiato cibi a me sconosciuti si era fatto pomeriggio, e ahimè bisognava tornare a casa; è stata una bella giornata dopo tutto.&lt;/p&gt;
-
-&lt;p&gt;Oggi ho iniziato &lt;strong&gt;Dust: An Elysian Tail&lt;/strong&gt; , in verità l&amp;rsquo;ho iniziato perchè sul forum di gamesvillage è stato creato un &amp;ldquo;gruppo di gioco&amp;rdquo; in cui ogni settimana si sceglie un gioco in single player tra quelli in possesso e lo si gioca, una cosa molto simpatica per smaltire tutti quei giochi mai provati nella libreria di steam dopo aver comprato tonnellate di Bundle.
-Il gioco lo trovo molto bello, scorrevole, grafica carina, qualche problema dal punto di vista dei comandi (la parata/contraccolpo non mi sembra ben implementata) ma si lascia giocare.&lt;/p&gt;
-
-&lt;p&gt;Bene, per ora è tutto, alla prossima.&lt;/p&gt;
-</description>
+      <description>Ok ennesimo post bimestrale giusto per scrivere qualcosa!
+Long story short: un mese e passa di &amp;ldquo;malattia&amp;rdquo;, ogni settimana una diversa, feels bad.
+Spunta fuori ogni tanto qualche persona del passato, incredibile come le persone siano uguali a prima, statica, leggermente diverse ma&amp;hellip; il succo è quello.
+Ho iniziato a lavorare al progettino di Programmazione 2 e dopo uno sprint iniziale sono subito rimasto bloccato su un problema stupido. Probabilmente ho gestito male la divisione iniziale del progetto, probabilmente è meglio ricominciare tutto d&amp;rsquo;accapo.</description>
     </item>
     
     <item>
@@ -1059,21 +130,7 @@ Il gioco lo trovo molto bello, scorrevole, grafica carina, qualche problema dal 
       <pubDate>Sat, 22 Mar 2014 09:52:04 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/malattia-malattia/</guid>
-      <description>&lt;p&gt;Ah!!! Povero me. Due settimane di tortura. Dopo 5 giorni di febbre a 39 per qualche virus alla gola, neanche una settimana di tregua che  sto male di nuovo, attacchi di dissenteria fino ad  oggi. Altri 4 giorni (e forse di più) di dolori. Mercoledì è stato allucinante, non riuscivo neanche a stare in piedi, dopo le prime due ore di algoritmi sono tornato a casa (non so neanche io come, simpatico un signore di colore sulla bicicletta che mi guarda e fa &amp;ldquo;hey amico, tu stai male! Sei italiano ? Perchè non hai chiamato tuo fratello per venire a prenderti in macchina?&amp;rdquo; , magari gringo, magari&amp;hellip;.) e appena arrivato mi sono buttato a letto fino alle 13, completamente distrutto, senza forze, a mala pena ho mangiato un po&amp;rsquo; di riso bianco. Febbre a 38.5 (again) , Oggi sarei dovuto andare alla &lt;a href=&#34;http://www.palazzomagnani.it/2013/07/lenigma-escher/&#34;&gt;Mostra di Escher&lt;/a&gt; a Reggio Emilia con Yingle ma questo mal di pancia non mi lascia pace. Mi dispiace tanto.&lt;/p&gt;
-
-&lt;p&gt;####Counter Strike: Gamesvillage Offensive
-Ieri partita fantastica &amp;ldquo;interna&amp;rdquo; su counter strike  tra gli utenti di Gamesvillage, molto divertente, ma un&amp;rsquo;attesa infinita per un semplice connect da console, mi domando quanti di loro abbiano mai giocato a un fps prima di Global Offensive. Durante la partita non ho dato il massimo, ero stanco e il mal di pancia mi stava uccidendo, però è stato comunque divertente.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/ppySP8E.jpg&#34; alt=&#34;pcw interna GV&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;####Free To Play
-Due giorni fa ho visto il documentario di Valve &lt;a href=&#34;http://www.freetoplaythemovie.com/&#34;&gt;Free To Play&lt;/a&gt; , mi ha commosso fin dall&amp;rsquo;inizio, il netgaming è una mia passione fin da quando ho avuto la connessione a internet , mi sarebbe piaciuto giocare competitivamente a qualche gioco (e l&amp;rsquo;ho anche fatto con scarsi risultati) ma non c&amp;rsquo;è mai stato quel &amp;ldquo;salto di qualità&amp;rdquo;, un po&amp;rsquo; per mancanza di dedizione mia un po&amp;rsquo; per fattori esterni. Vedere questo documentario mi ricorda che c&amp;rsquo;è chi ce l&amp;rsquo;ha fatta ed è bellissimo poter sentire la loro, sapere che sono umani e che dietro uno schermo c&amp;rsquo;è gente esattamente come te con la stessa passione. Preso dalla foga ho riaperto Dota 2 e hanno implementato tantissime cose, una modalità di preciso mi ha colpito positivamente, ed è l&amp;rsquo;ability draft.&lt;/p&gt;
-
-&lt;p&gt;####Ability Draft
-Ability Draft è una modalità di Dota 2 in cui a ognuno viene assegnato un eroe a caso e a turno ciascun player deve scegliere una abilità da assegnare al proprio eroe da un pool di abilità (non tutte quindi) che è in genere le abilità di tutti gli eroi che sono stati scelti per i player + qualche abilità di eroi non presenti nella partita. La cosa fantastica di questa modalità è l&amp;rsquo;infinita possibilità di creare eroi &lt;em&gt;nuovi&lt;/em&gt; e le situazioni che si creano durante la partita. Fantastico.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://s18.postimg.org/a9rjjamft/Untitled.png&#34; alt=&#34;Ability Draft&#34; /&gt;&lt;/p&gt;
-</description>
+      <description>Ah!!! Povero me. Due settimane di tortura. Dopo 5 giorni di febbre a 39 per qualche virus alla gola, neanche una settimana di tregua che sto male di nuovo, attacchi di dissenteria fino ad oggi. Altri 4 giorni (e forse di più) di dolori. Mercoledì è stato allucinante, non riuscivo neanche a stare in piedi, dopo le prime due ore di algoritmi sono tornato a casa (non so neanche io come, simpatico un signore di colore sulla bicicletta che mi guarda e fa &amp;ldquo;hey amico, tu stai male!</description>
     </item>
     
     <item>
@@ -1082,13 +139,7 @@ Ability Draft è una modalità di Dota 2 in cui a ognuno viene assegnato un eroe
       <pubDate>Sat, 15 Mar 2014 22:50:17 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/new-semester/</guid>
-      <description>&lt;p&gt;Il secondo semestre è iniziato, l&amp;rsquo;habit è stato settato meglio di quanto mi aspettassi: Primi posti centrali. Fa molto secchia ma è l&amp;rsquo;unico modo per potermi dare la prova che cerco e capire se questo corso fa per me oppure no.
-Stare alla prima fila da soli vantaggi. Quando siamo in aula IV / V è piuttosto facile prendere posto, il problema arriva nel momento in cui siamo in laboratorio, prendere i primi posti è dura e la differenza tra prima e seconda fila si nota tantissimo in termini di concentrazione.
-Sto cercando di dare il 100% , sto seguendo, prendendo appunti, &lt;strong&gt;ricopiandoli in bella&lt;/strong&gt; e ripassando a casa. Fino ad ora sto notando rispetto all&amp;rsquo;anno scorso di riuscire a stare dietro ai professori, Algoritmi è molto più difficile, ma non demordo.
-A proposito di algoritmi: Il professore quest&amp;rsquo;anno ha deciso di cambiare metodo di esame e libro di testo.
-L&amp;rsquo;esame ora si svolge in due esami scritti e non più in un esame scritto e uno orale. Cosa positiva ? forse.
-Mentre il libro non è più &amp;ldquo;Introduzione agli algoritmi e strutture dati&amp;rdquo; di Macgraw Hill ma &amp;ldquo;Algorithms&amp;rdquo; (si, testo in inglese) . Per quanto mi riguarda la lingua non ho problemi, quello che mi crea un po&amp;rsquo; di confusione è gli argomenti che sono &lt;em&gt;leggermente&lt;/em&gt; cambiati rispetto all&amp;rsquo;anno scorso, ma nulla di trascendentale.&lt;/p&gt;
-</description>
+      <description>Il secondo semestre è iniziato, l&amp;rsquo;habit è stato settato meglio di quanto mi aspettassi: Primi posti centrali. Fa molto secchia ma è l&amp;rsquo;unico modo per potermi dare la prova che cerco e capire se questo corso fa per me oppure no. Stare alla prima fila da soli vantaggi. Quando siamo in aula IV / V è piuttosto facile prendere posto, il problema arriva nel momento in cui siamo in laboratorio, prendere i primi posti è dura e la differenza tra prima e seconda fila si nota tantissimo in termini di concentrazione.</description>
     </item>
     
     <item>
@@ -1097,36 +148,9 @@ Mentre il libro non è più &amp;ldquo;Introduzione agli algoritmi e strutture d
       <pubDate>Thu, 30 Jan 2014 15:28:40 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/fine-gennaio-2014-2/</guid>
-      <description>&lt;p&gt;####Premessa
-L&amp;rsquo;idea di aggiornare questo blog una volta alla settimana era bella, ma evidentemente è un compito troppo arduo per me. Quando settai il blog  probabilmente quello di cui sentivo bisogno non era scrivere ma solo smanettare con qualcosa.
-Beh, vediamo di renderlo utile allora.&lt;/p&gt;
-
-&lt;p&gt;###Periodo esami
-######prima il dovere&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Ahimè, il mese di gennaio / febbraio / &lt;del&gt;marzo&lt;/del&gt; è quello rinominato &lt;strong&gt;Periodo esami&lt;/strong&gt; , in questi mesi bisogna scollegare la testa da tutto ciò che non è inerente allo studio e focalizzarsi solo sul passare questi maledetti esami.
-Per quanto mi riguarda fino ad ora (data 28 gennaio 2014) la cosa si sta rivelando più difficile (e fallimentare) del previsto. Sono col morale per terra e mi sembra di rivivere esattamente l&amp;rsquo;anno scorso, cercherò di impegnarmi fino alla fine di febbraio sperando di passare almeno due dei tre esami previsti, cioè algebra lineare e programmazione 1 così da poter impegnarmi maggiormente nel secondo semestre senza preoccupazioni (a parte analisi la quale se ne parlerà quest&amp;rsquo;estate).&lt;/p&gt;
-
-&lt;p&gt;####Focalizzarsi sullo studio&lt;/p&gt;
-
-&lt;p&gt;Questo gradino è diventato molto facile da scavalcare con un semplice e efficace modo: Rimanere in biblioteca.
-A casa non riesco a concentrarmi e sopratutto a mantenere la testa sui libri. In biblioteca sono circondato da libri e quindi non posso fare altro.
-A parte gli scherzi: Essere lontani da casa in un luogo adibito allo studio mi permette di non distrarmi e di poter studiare con serenità anche tante ore (ormai vengo all&amp;rsquo;uni all 9 e torno la sera). Importante è studiare effettivamente, una connessione a internet la si ha e con un computer/ipad/iphone è facile distrarsi (non tanto quanto casa) ma con le dovute pause si riesce ad arginare anche questo problema.&lt;/p&gt;
-
-&lt;p&gt;###Situazione &amp;ldquo;Gaming&amp;rdquo;
-######&amp;hellip;e dopo il piacere!
-Tornato a casa l&amp;rsquo;ultima cosa che voglio vedere dopo &lt;del&gt;12&lt;/del&gt; 8 ore di studio è libri o formule o teoremi. Quindi accendo il computer e si parte.
-Ultimamente sto giocando con un gruppo di gente con cui devo dire mi sto trovando davvero bene, le serate passano tranquille (finalmente) e sopratutto ci si diverte un casino. Dota ormai l&amp;rsquo;ho lasciato (penso definitivamente) per vari motivi, uno dei principali è che è un gioco fatto apposta per creare stress e nervosismo, per me che è importante anche avere una commmunity dietro che sia il più &lt;em&gt;polite&lt;/em&gt; possibile, dota è puro cancro e come tale me ne sono liberato prima che fosse troppo tardi.
-Ora è su Counter Strike: Global Offensive il gioco su cui passo le serate, è estremamente divertente, lineare e rage-free, non esiste il concetto di snowball (grazie a dio) e la skill la fa da padrona.
-Ho scritto all&amp;rsquo;inizio che non avrei parlato di cose negative, ma faccio uno strappo alla regola per una cosa che scriverò ora in un certo senso legata a questo paragrafo e su cui -spero- non dovrò/vorrò tornarci più.
-Certa gente dovrebbe sotterrare la testa sotto la sabbia dopo gli atteggiamenti che ha avuto piuttosto che prendere per il culo (come è ovvio che fa),t purtroppo le merde esistono ovunque, e, a quanto pare tendono a fare gruppo, quindi ragionamenti del genere non possono essere compresi, l&amp;rsquo;unica cosa che possono fare è sfottere e rimanere i poveri falliti che sono, accendere il cervello è troppo impegnativo e farsi un esame di coscienza sarebbe fatale, meglio farsi due risate.
-####timballi&lt;/p&gt;
-
-&lt;p&gt;Ritornando al discorso gaming, i timballi rendono ogni sera più piacevole, sto riscoprendo il gusto di giocare in compagnia, senza rage e minorati mentali intorno e, dio, che bella sensazione.
-il gruppo sta crescendo esponenzialmente e spero di non trovare in futuro elementi nocivi e distruttivi nel gruppo, sarebbe davvero un gran peccato.&lt;/p&gt;
-
-&lt;p&gt;Termino qui questo post, magari scrivero roba in futuro, non lo so, una volta a settimana mi sembra dura ora come ora.&lt;/p&gt;
-</description>
+      <description>####Premessa L&amp;rsquo;idea di aggiornare questo blog una volta alla settimana era bella, ma evidentemente è un compito troppo arduo per me. Quando settai il blog probabilmente quello di cui sentivo bisogno non era scrivere ma solo smanettare con qualcosa. Beh, vediamo di renderlo utile allora.
+###Periodo esami ######prima il dovere&amp;hellip;
+Ahimè, il mese di gennaio / febbraio / marzo è quello rinominato Periodo esami , in questi mesi bisogna scollegare la testa da tutto ciò che non è inerente allo studio e focalizzarsi solo sul passare questi maledetti esami.</description>
     </item>
     
     <item>
@@ -1135,30 +159,26 @@ il gruppo sta crescendo esponenzialmente e spero di non trovare in futuro elemen
       <pubDate>Mon, 25 Nov 2013 16:25:24 +0000</pubDate>
       
       <guid>https://blackdev1l.github.io/post/a-new-vps/</guid>
-      <description>&lt;p&gt;##HELLO WORLD!&lt;/p&gt;
-
-&lt;p&gt;stanotte verso le 2 mi hanno risposto al ticket che ho creato riguardo l&amp;rsquo;impossibilità di connettermi a internet attraverso la vps, mi hanno detto che era un problema del firewall della serverfarm e ora è tutto O.K. , infatti ora sto scrivendo dalla mia nuovissima vps !
-nel post precedente avevo detto di averla pagata 35$ one time fee (cioè una volta per sempre) , per ora sembra andare discretamente, il ping è alto (200) ma per quello che devo farci io va più che bene. Teoricamente dovrei coprire i costi dopo 3 anni di utilizzo (costa 12$/year il modello che ho scelto io) .
-##Technical stuff&lt;/p&gt;
-
-&lt;p&gt;la vps gira su vmware , con le seguenti risorse:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;4 Xeon vCPU&lt;/li&gt;
-&lt;li&gt;1 public IP&lt;/li&gt;
-&lt;li&gt;2GB ECC RAM&lt;/li&gt;
-&lt;li&gt;40GB SSD&lt;/li&gt;
-&lt;li&gt;100 Mbit Network&lt;/li&gt;
-&lt;li&gt;3TB monthly transfer&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;la compagnia si chiama &lt;a href=&#34;http://cloudatcost.com/&#34;&gt;cloudatcost&lt;/a&gt; e per ora su internet si leggono pareri discordanti (più sul lato negativo che quello positivo)&lt;/p&gt;
-
-&lt;p&gt;la scelta dell&amp;rsquo;os è abbastanza esigua, si hanno 3 scelte: debian 7, CentOs 6.4 e Ubuntu 12.10. Io questa volta ho voluto provare quest&amp;rsquo;ultimo, l&amp;rsquo;unico motivo è quello della facilità nel reperire guide e how-to per la gestione e la manutenzione dell&amp;rsquo;os, non sono un amante dei sistemi debian-based, utilizzo arch linux sul mio laptop e mi trovo alla grande.
-Una nota particolare: E&amp;rsquo; possibile caricare e usare un immagine vmware sulla vps, quindi potenzialmente si puo&amp;rsquo; usare qualsiasi os che ci venga in mente. Io ero abbastanza impaziente di configurare il tutto per poter togliermi questo peso da dosso e annullare la subscription conla compagnia precedente.&lt;/p&gt;
-
-&lt;p&gt;Per ora è tutto. Alla prossima!&lt;/p&gt;
-</description>
+      <description>##HELLO WORLD!
+stanotte verso le 2 mi hanno risposto al ticket che ho creato riguardo l&amp;rsquo;impossibilità di connettermi a internet attraverso la vps, mi hanno detto che era un problema del firewall della serverfarm e ora è tutto O.K. , infatti ora sto scrivendo dalla mia nuovissima vps ! nel post precedente avevo detto di averla pagata 35$ one time fee (cioè una volta per sempre) , per ora sembra andare discretamente, il ping è alto (200) ma per quello che devo farci io va più che bene.</description>
+    </item>
+    
+    <item>
+      <title>A new beginning</title>
+      <link>https://blackdev1l.github.io/post/a-new-beginning/</link>
+      <pubDate>Sun, 24 Nov 2013 20:27:35 +0000</pubDate>
+      
+      <guid>https://blackdev1l.github.io/post/a-new-beginning/</guid>
+      <description>Rieccoci qua, era da molto (da quando ho settato questo blog) che volevo scrivere un post giusto per mettere bianco su nero alcune cose, volevo aspettare di spostare il database sul nuovo server che non riesce a connettersi a internet ma non volevo aspettare di più. Dopo la traumatica esperienza di quest&amp;rsquo;estate (ho promesso di non scrivere cose tristi quindi non scriverò nulla di quel periodo) ho deciso di voltare pagina in modo definitivo, anche grazie all&amp;rsquo;aiuto di una persona molto speciale e che ogni giorno di più si sta affermando come un punto di riferimeto assoluto per me (wo ai ni) , ho disinstallato dota e dato un taglio netto con quella droga gioco e ho iniziato a studiare più o meno seriamente analisi e concentrandomi in generale sull&amp;rsquo;università.</description>
+    </item>
+    
+    <item>
+      <title>Welcome Ghost !</title>
+      <link>https://blackdev1l.github.io/post/welcome-ghost/</link>
+      <pubDate>Sun, 03 Nov 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://blackdev1l.github.io/post/welcome-ghost/</guid>
+      <description>Dopo svariate ore passate a capire cosa non andava sulla mia vps per far andare questo piccolo blog e altrettante ore la mattina dopo, finalmente eccomi qua! Il problema era una sola, piccola, fottutissima virgola. Maledetto javascript. Comunque, non scrivo da anni su un blog, e quando scrivevo ero parecchio incazzato col mondo e finivo per scrivere post abbastanza depressi. Credo di avere superato quella fase e questo blog tratterà principalmente di gaming e roba collegata a internet, magari qualcosina sull&amp;rsquo;informatica.</description>
     </item>
     
   </channel>

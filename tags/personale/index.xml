@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personale on Cristian&#39;s blog</title>
-    <link>https://blackdev1l.github.io/tags/personale/index.xml</link>
+    <link>https://blackdev1l.github.io/tags/personale/</link>
     <description>Recent content in Personale on Cristian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <atom:link href="https://blackdev1l.github.io/tags/personale/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Mar 2014 16:19:52 +0100</lastBuildDate>
+    
+	<atom:link href="https://blackdev1l.github.io/tags/personale/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>About</title>
@@ -14,21 +17,7 @@
       <pubDate>Thu, 27 Mar 2014 16:19:52 +0100</pubDate>
       
       <guid>https://blackdev1l.github.io/about/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://farm2.staticflickr.com/1429/4720170157_65c8fa2c2b_o_d.jpg&#34; alt=&#34;Best foto&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ciao a te oh navigante! Sono &lt;strong&gt;Cristian Achille&lt;/strong&gt; e questo è il mio blog. Sono nato e cresciuto a Crotone, una triste e soleggiata città del Sud Italia,  ho &lt;del&gt;studiato elettronica&lt;/del&gt; fatto finta di studiare per 5 anni all&amp;rsquo;I.P.S.I.A. di crotone, ora studio informatica all&amp;rsquo;Università di Modena. A 7 anni ho ricevuto il mio primo computer e da lì è stato amore a primo tick. Andando avanti negli anni e sopratutto con l&amp;rsquo;avvento di internet in casa mia la passione per l&amp;rsquo;informatica ha sopraffatto tutte le altre, portandomi a chiudermi in casa e passare notti in bianco a scoprire le meraviglie di questo mondo magico. Tutt&amp;rsquo;ora mi viene facile perdermi tra i meandri del web, anche se gli interessi sono cambiati e le conoscenze pure.
-A pari passo con l&amp;rsquo;informatica cresceva in me anche un&amp;rsquo;altra grande passione: &lt;strong&gt;Il netgaming&lt;/strong&gt;. Da quando ho avuto accesso a internet le console sono diventate sempre di più un lontano ricordo e il single player una modalità che non mi dava più nulla in termini di divertimento. Così crescendo scoprì i primi mmmorpg, i primi fps online. Una avventura lunga 3 anni tra le lande di &lt;strong&gt;Ultima Online Dreams&lt;/strong&gt; rimarrà sempre uno dei ricordi più belli legati all&amp;rsquo;online gaming. Poi l&amp;rsquo;avvento di &lt;strong&gt;Starcraft 2&lt;/strong&gt;, la scena competitiva e in fine &lt;strong&gt;Dota 2&lt;/strong&gt;, con una piccola esperienza di 6 mesi con un team europeo, nessun premio o grande traguardo ma tanta tanta esperienza e voglia di migliorare.&lt;/p&gt;
-
-&lt;p&gt;###Non solo computer
-Non è solo gurdare uno schermo quello che mi piace fare durante il tempo libero. Amo leggere, ascoltare musica, guardare tonnellate di serie tv e film.
-Un tempo fotografavo, una passione un po&amp;rsquo; costosa (all&amp;rsquo;inizio) ma che mi ha dato belle soddisfazioni. &lt;a href=&#34;https://www.flickr.com/photos/blackdevil93/&#34;&gt;Qui&lt;/a&gt; potete trovare un paio di foto che caricai.
-Ancora prima adoravo andare sullo skateboard, sembra strano dirlo ma ero un tipo piuttosto sportivo, poi l&amp;rsquo;internet ha stravolto tutto.
-Mi piace anche viaggiare (scontato vero?) soldi permettendo. Considerando che abito nel più bel paese del mondo e che avrò visitato si e no 2 o 3 città fuori dalla Calabria ogni tanto mi concedo qualche mini viaggio insieme alla mia ragazza per conscere nuovi posti e scoprire le bellezze nostrane.&lt;/p&gt;
-
-&lt;p&gt;Mi sembra di aver scritto abbastanza su di me. Per qualsiasi cosa potete contattarmi. I dettagli sono sulla pagina Contact Me!&lt;/p&gt;
-
-&lt;p&gt;Buona permanenza.&lt;/p&gt;
-</description>
+      <description>Ciao a te oh navigante! Sono Cristian Achille e questo è il mio blog. Sono nato e cresciuto a Crotone, una triste e soleggiata città del Sud Italia, ho studiato elettronica fatto finta di studiare per 5 anni all&amp;rsquo;I.P.S.I.A. di crotone, ora studio informatica all&amp;rsquo;Università di Modena. A 7 anni ho ricevuto il mio primo computer e da lì è stato amore a primo tick. Andando avanti negli anni e sopratutto con l&amp;rsquo;avvento di internet in casa mia la passione per l&amp;rsquo;informatica ha sopraffatto tutte le altre, portandomi a chiudermi in casa e passare notti in bianco a scoprire le meraviglie di questo mondo magico.</description>
     </item>
     
   </channel>
