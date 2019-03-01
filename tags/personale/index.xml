@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personale on Cristian&#39;s blog</title>
-    <link>http://blog.dev1l.tech/tags/personale/</link>
+    <link>http://achille.dev/tags/personale/</link>
     <description>Recent content in Personale on Cristian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Thu, 27 Mar 2014 16:19:52 +0100</lastBuildDate>
     
-	<atom:link href="http://blog.dev1l.tech/tags/personale/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://achille.dev/tags/personale/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>http://blog.dev1l.tech/about/</link>
+      <link>http://achille.dev/about/</link>
       <pubDate>Thu, 27 Mar 2014 16:19:52 +0100</pubDate>
       
-      <guid>http://blog.dev1l.tech/about/</guid>
+      <guid>http://achille.dev/about/</guid>
       <description>Ciao a te oh navigante! Sono Cristian Achille e questo è il mio blog. Sono nato e cresciuto a Crotone, una triste e soleggiata città del Sud Italia, ho studiato elettronica fatto finta di studiare per 5 anni all&amp;rsquo;I.P.S.I.A. di crotone, ora studio informatica all&amp;rsquo;Università di Modena. A 7 anni ho ricevuto il mio primo computer e da lì è stato amore a primo tick. Andando avanti negli anni e sopratutto con l&amp;rsquo;avvento di internet in casa mia la passione per l&amp;rsquo;informatica ha sopraffatto tutte le altre, portandomi a chiudermi in casa e passare notti in bianco a scoprire le meraviglie di questo mondo magico.</description>
     </item>
     

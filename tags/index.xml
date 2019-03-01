@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Cristian&#39;s blog</title>
-    <link>http://blog.dev1l.tech/tags/</link>
+    <link>http://achille.dev/tags/</link>
     <description>Recent content in Tags on Cristian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Thu, 27 Mar 2014 16:19:52 +0100</lastBuildDate>
     
-	<atom:link href="http://blog.dev1l.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://achille.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Personale</title>
-      <link>http://blog.dev1l.tech/tags/personale/</link>
+      <link>http://achille.dev/tags/personale/</link>
       <pubDate>Thu, 27 Mar 2014 16:19:52 +0100</pubDate>
       
-      <guid>http://blog.dev1l.tech/tags/personale/</guid>
+      <guid>http://achille.dev/tags/personale/</guid>
       <description></description>
     </item>
     
