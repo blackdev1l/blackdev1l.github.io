@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Cristian&#39;s blog</title>
+    <title>Posts on Cristian Achille</title>
     <link>https://achille.dev/post/</link>
-    <description>Recent content in Posts on Cristian&#39;s blog</description>
+    <description>Recent content in Posts on Cristian Achille</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <language>en-us</language>
     <lastBuildDate>Fri, 29 Jan 2016 17:37:47 +0000</lastBuildDate>
     
 	<atom:link href="https://achille.dev/post/index.xml" rel="self" type="application/rss+xml" />
@@ -148,9 +148,8 @@ Ho iniziato a lavorare al progettino di Programmazione 2 e dopo uno sprint inizi
       <pubDate>Thu, 30 Jan 2014 15:28:40 +0000</pubDate>
       
       <guid>https://achille.dev/post/fine-gennaio-2014-2/</guid>
-      <description>####Premessa L&amp;rsquo;idea di aggiornare questo blog una volta alla settimana era bella, ma evidentemente è un compito troppo arduo per me. Quando settai il blog probabilmente quello di cui sentivo bisogno non era scrivere ma solo smanettare con qualcosa. Beh, vediamo di renderlo utile allora.
-###Periodo esami ######prima il dovere&amp;hellip;
-Ahimè, il mese di gennaio / febbraio / marzo è quello rinominato Periodo esami , in questi mesi bisogna scollegare la testa da tutto ciò che non è inerente allo studio e focalizzarsi solo sul passare questi maledetti esami.</description>
+      <description>Premessa L&amp;rsquo;idea di aggiornare questo blog una volta alla settimana era bella, ma evidentemente è un compito troppo arduo per me. Quando settai il blog probabilmente quello di cui sentivo bisogno non era scrivere ma solo smanettare con qualcosa. Beh, vediamo di renderlo utile allora.
+Periodo esami prima il dovere&amp;hellip; Ahimè, il mese di gennaio / febbraio / marzo è quello rinominato Periodo esami , in questi mesi bisogna scollegare la testa da tutto ciò che non è inerente allo studio e focalizzarsi solo sul passare questi maledetti esami.</description>
     </item>
     
     <item>
@@ -159,8 +158,7 @@ Ahimè, il mese di gennaio / febbraio / marzo è quello rinominato Periodo esami
       <pubDate>Mon, 25 Nov 2013 16:25:24 +0000</pubDate>
       
       <guid>https://achille.dev/post/a-new-vps/</guid>
-      <description>##HELLO WORLD!
-stanotte verso le 2 mi hanno risposto al ticket che ho creato riguardo l&amp;rsquo;impossibilità di connettermi a internet attraverso la vps, mi hanno detto che era un problema del firewall della serverfarm e ora è tutto O.K. , infatti ora sto scrivendo dalla mia nuovissima vps ! nel post precedente avevo detto di averla pagata 35$ one time fee (cioè una volta per sempre) , per ora sembra andare discretamente, il ping è alto (200) ma per quello che devo farci io va più che bene.</description>
+      <description>HELLO WORLD! stanotte verso le 2 mi hanno risposto al ticket che ho creato riguardo l&amp;rsquo;impossibilità di connettermi a internet attraverso la vps, mi hanno detto che era un problema del firewall della serverfarm e ora è tutto O.K. , infatti ora sto scrivendo dalla mia nuovissima vps ! nel post precedente avevo detto di averla pagata 35$ one time fee (cioè una volta per sempre) , per ora sembra andare discretamente, il ping è alto (200) ma per quello che devo farci io va più che bene.</description>
     </item>
     
     <item>

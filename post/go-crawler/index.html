@@ -1,248 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.26-DEV" />
-
-  <title>Go Crawler &middot; Cristian&#39;s blog</title>
-
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://achille.dev/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://achille.dev/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="https://achille.dev/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
- 
-  
-
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
-
-  <link rel="shortcut icon" href="https://achille.devimg/favicon.ico" type="image/x-icon" />
-
-  
-  
-
-</head>
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="">
+<meta name="description"
+    content="Iniziamo l&amp;rsquo;anno con un progettino semplice semplice per impratichirsi con golang , un linguaggio creato da google che permette un esperienza estremamente flawless durante la scrittura del codice e una velocità impressionante, tant&amp;rsquo;è che molte aziende stanno migrando i propri servizi riscrivendoli in go.
+Quello che avevo in mente era creare un sito usando Polymer come frontend e go in backend, che dato un URL parsi tutti i link che trovi all&amp;rsquo;interno e lo mostri sotto forma di grafo (precisamente albero) , decidendo quantità di nodi,~~ e anche quanto andare in profondità durante il crawl degli URL." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://achille.dev/post/go-crawler/" />
 
 
-<body>
-<div id="layout">
+<title>
+    
+    Go Crawler :: Cristian Achille  — blog about programming
+    
+</title>
 
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.0d47b4686e972122bd29f0c1e3dd024a2d541cd8b1b543622520822ea6f4238a.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#252627"><meta itemprop="name" content="Go Crawler">
+<meta itemprop="description" content="Iniziamo l&rsquo;anno con un progettino semplice semplice per impratichirsi con golang , un linguaggio creato da google che permette un esperienza estremamente flawless durante la scrittura del codice e una velocità impressionante, tant&rsquo;è che molte aziende stanno migrando i propri servizi riscrivendoli in go.
+Quello che avevo in mente era creare un sito usando Polymer come frontend e go in backend, che dato un URL parsi tutti i link che trovi all&rsquo;interno e lo mostri sotto forma di grafo (precisamente albero) , decidendo quantità di nodi,~~ e anche quanto andare in profondità durante il crawl degli URL.">
+
+
+<meta itemprop="datePublished" content="2015-02-09T02:17:51&#43;00:00" />
+<meta itemprop="dateModified" content="2015-02-09T02:17:51&#43;00:00" />
+<meta itemprop="wordCount" content="858">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://achille.dev"/>
+
+<meta name="twitter:title" content="Go Crawler"/>
+<meta name="twitter:description" content="Iniziamo l&rsquo;anno con un progettino semplice semplice per impratichirsi con golang , un linguaggio creato da google che permette un esperienza estremamente flawless durante la scrittura del codice e una velocità impressionante, tant&rsquo;è che molte aziende stanno migrando i propri servizi riscrivendoli in go.
+Quello che avevo in mente era creare un sito usando Polymer come frontend e go in backend, che dato un URL parsi tutti i link che trovi all&rsquo;interno e lo mostri sotto forma di grafo (precisamente albero) , decidendo quantità di nodi,~~ e anche quanto andare in profondità durante il crawl degli URL."/>
+
+
+
+
+<meta property="article:published_time" content="2015-02-09 02:17:51 &#43;0000 UTC" />
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">~/cristian</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
 </a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="https://achille.dev/">Cristian</a>
 
 
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://achille.dev/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://achille.dev/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://achille.dev/about">About</a></li><li><a href="https://achille.dev/post">Blog</a></li>
     </ul>
-  </div>
+</nav>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
 
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/_blackdev1l" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://instagram.com/blackdev1l" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
-    </li>
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://flickr.com/photos/*" target="_blank"><i class="fa fa-flickr fa-fw"></i>Flickr</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://reddit.com/user/blackdev1l" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/blackdev1l" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://bitbucket.org/blackdev1l" target="_blank"><i class="fa fa-bitbucket-square fa-fw"></i>Bitbucket</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://steamcommunity.com/id/blackuzzo" target="_blank"><i class="fa fa-steam-square fa-fw"></i>Steam</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://last.fm/user/blackdevil93" target="_blank"><i class="fa fa-lastfm-square fa-fw"></i>Last.fm</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://keybase.io/blackdev1l" target="_blank"><i class="fa fa-key fa-fw"></i>Keybase</a>
-    </li>
-    
-
-  </ul>
-</div>
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
 
 
-  <div>
-  <div class="small-print">
-    <small>&copy; 2016. All rights reserved.</small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
+            <div class="content">
+                
+    <main class="post">
 
-</div>
+        <div class="post-info">
+            
+            </p>
+        </div>
 
+        <article>
+            <h2 class="post-title"><a href="https://achille.dev/post/go-crawler/">Go Crawler</a></h2>
 
-  <div id="main">
+            
 
-
-<div class="header">
-  <h1>Go Crawler</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>09 Feb 2015, 02:17</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  
+            <div class="post-content">
+                
 
 <p>Iniziamo l&rsquo;anno con un progettino semplice semplice per impratichirsi con
 <a href="http://golang.org/">golang</a> , un linguaggio creato da google che permette un esperienza estremamente flawless durante la scrittura del codice e una velocità impressionante, tant&rsquo;è che molte aziende stanno migrando i propri servizi riscrivendoli in go.</p>
@@ -267,23 +150,22 @@
 <p>Polymer è un framework scritto da google che attraverso web components permette di creare bellissime UI con l&rsquo;utilizzo di elementi predefiniti  e la creazione di nuovi.
 Ah, e tutto in Material Design.</p>
 
-<p>inanzitutto bisogna scaricare in locale Polymer, io ho usato bower, il quale mi permette di gestire anche eventuali dipendenze senza uscir matto, dopo di che importare gli elementi nel file .html
-```prettyprint lang-html
-    <!-- 2. Load the component using an HTML Import -->
-    <link rel="import" href="bower_components/paper-input/paper-input.html">
-    <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-    <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
-    <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="bower_components/ajax-form/ajax-form.html">
-    <link rel="import" href="bower_components/paper-slider/paper-slider.html"></p>
+<p>inanzitutto bisogna scaricare in locale Polymer, io ho usato bower, il quale mi permette di gestire anche eventuali dipendenze senza uscir matto, dopo di che importare gli elementi nel file .html</p>
 
-<pre><code>
-dopo aver dato un occhiata alla documentazione (potevi fare di meglio google, ma va bene così) ho creato una bar fissata in top, un paper-input (per l'inserimento dell'url) , e due paper-slider per la quantità dei nodi e profondità del grafo. 
+<pre><code class="language-prettyprint">    &lt;!-- 2. Load the component using an HTML Import --&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bower_components/paper-input/paper-input.html&quot;&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bower_components/core-header-panel/core-header-panel.html&quot;&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bower_components/core-toolbar/core-toolbar.html&quot;&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bower_components/paper-button/paper-button.html&quot;&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bower_components/ajax-form/ajax-form.html&quot;&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bower_components/paper-slider/paper-slider.html&quot;&gt;
+</code></pre>
 
-La documentazione consiglia di utilizzare l'element [ajax-form](http://garstasio.github.io/ajax-form/components/ajax-form/) per l'invio dei dati attraverso paper-input, è molto facile da utilizzare e attraverso essa sono riuscito con semplicitià a inviare la request, ricevere e utilizzare il response. 
+<p>dopo aver dato un occhiata alla documentazione (potevi fare di meglio google, ma va bene così) ho creato una bar fissata in top, un paper-input (per l&rsquo;inserimento dell&rsquo;url) , e due paper-slider per la quantità dei nodi e profondità del grafo.</p>
 
-```prettyprint lang-html
-&lt;form is=&quot;ajax-form&quot; action=&quot;send&quot; method=&quot;post&quot; enctype=&quot;application/json&quot;&gt;
+<p>La documentazione consiglia di utilizzare l&rsquo;element <a href="http://garstasio.github.io/ajax-form/components/ajax-form/">ajax-form</a> per l&rsquo;invio dei dati attraverso paper-input, è molto facile da utilizzare e attraverso essa sono riuscito con semplicitià a inviare la request, ricevere e utilizzare il response.</p>
+
+<pre><code class="language-prettyprint">&lt;form is=&quot;ajax-form&quot; action=&quot;send&quot; method=&quot;post&quot; enctype=&quot;application/json&quot;&gt;
     &lt;paper-input name=&quot;url&quot; label=&quot;Crawl this url&quot; floatingLabel&gt;&lt;/paper-input&gt;
     &lt;div id=&quot;button&quot;&gt;
         &lt;paper-button raised id=&quot;submitButton&quot;&gt;Submit&lt;/paper-button&gt;
@@ -292,196 +174,171 @@ La documentazione consiglia di utilizzare l'element [ajax-form](http://garstasio
 &lt;/form&gt;
 </code></pre>
 
-<p>Per quanto riguarda la parte in java script
-```prettyprint lang-js
-  <script>
-  var s = new sigma(document.getElementById(&lsquo;container&rsquo;));
-  document.getElementById(&lsquo;submitButton&rsquo;).addEventListener(&lsquo;click&rsquo;, function() {
-  document.forms[0].submit();
-  });</p>
+<p>Per quanto riguarda la parte in java script</p>
 
-<p>document.forms[0].addEventListener(&lsquo;submitted&rsquo;, function(event) {
+<pre><code class="language-prettyprint">  &lt;script&gt;
+  var s = new sigma(document.getElementById('container'));
+  document.getElementById('submitButton').addEventListener('click', function() {
+  document.forms[0].submit();
+  });
+
+  document.forms[0].addEventListener('submitted', function(event) {
     var data = JSON.parse(event.detail.responseText);
     console.log(data);
     s.graph.read(data)
     s.refresh();
     s.graph.clear()
-   });</p>
+   });
 
-<p></script></p>
-
-<pre><code>
-
-Così ogni volta che premo submit manda i dati, attende che vengono parsati dal server scritto in go, al trigger del &quot;submitted&quot; (quando i dati vengono ricevuti) la libreria sigma si aggiorna con il grafo ricevuto in formato json. Si puo' quindi inserire l'url o modificare i nodi e clickare submit senza dover aggiornare la pagina o creare qualche tipo di blocco. 
-Ma ora guardiamo cosa c'è sotto il &quot;cofano&quot;. 
-
-
-##Back-end
-
-Scrivere web server in go grazie alle sue librerie std è davvero una favola. Ci si impiega letteralmente poche righe di codice per poter avere un semplice webserver che mostra un Hello World. 
-direttamente dalla documentazione ufficiale: 
-
+&lt;/script&gt;
 </code></pre>
 
-<p>package main</p>
+<p>Così ogni volta che premo submit manda i dati, attende che vengono parsati dal server scritto in go, al trigger del &ldquo;submitted&rdquo; (quando i dati vengono ricevuti) la libreria sigma si aggiorna con il grafo ricevuto in formato json. Si puo&rsquo; quindi inserire l&rsquo;url o modificare i nodi e clickare submit senza dover aggiornare la pagina o creare qualche tipo di blocco.
+Ma ora guardiamo cosa c&rsquo;è sotto il &ldquo;cofano&rdquo;.</p>
 
-<p>import (
-    &ldquo;fmt&rdquo;
-    &ldquo;net/http&rdquo;
-)</p>
+<h2 id="back-end">Back-end</h2>
 
-<p>func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, &ldquo;Hi there, I love %s!&rdquo;, r.URL.Path[1:])
-}</p>
+<p>Scrivere web server in go grazie alle sue librerie std è davvero una favola. Ci si impiega letteralmente poche righe di codice per poter avere un semplice webserver che mostra un Hello World.
+direttamente dalla documentazione ufficiale:</p>
 
-<p>func main() {
-    http.HandleFunc(&ldquo;/&rdquo;, handler)
-    http.ListenAndServe(&rdquo;:8080&rdquo;, nil)
-}</p>
+<pre><code>package main
 
-<pre><code>
-Fantastico vero? Ho suddiviso in 3 file il progetto
+import (
+    &quot;fmt&quot;
+    &quot;net/http&quot;
+)
 
-* handlers.go 
-* graph.go
-* main.go
-
-Il primo gestisce le richieste, solo 2, quella per il root path e quindi static files e la richiesta /send che viene usata per ricevere l'url e il numero dei nodi e ritornare un json con tutti i link trovati da quell'url. 
-
-Intanto guardiamo Main.go 
-
-</code></pre>
-
-<p>package main</p>
-
-<p>import (
-    &ldquo;github.com/gorilla/mux&rdquo;
-    &ldquo;log&rdquo;
-    &ldquo;math/rand&rdquo;
-    &ldquo;net/http&rdquo;
-    &ldquo;time&rdquo;
-)</p>
-
-<p>func main() {</p>
-
-<pre><code>r := mux.NewRouter()
-r.HandleFunc(&quot;/&quot;, Index)
-r.HandleFunc(&quot;/send&quot;, Send)
-r.PathPrefix(&quot;/&quot;).Handler(http.FileServer(http.Dir(&quot;./www/&quot;)))
-http.Handle(&quot;/&quot;, r)
-
-log.Fatal(http.ListenAndServe(&quot;:8080&quot;, r))
-</code></pre>
-
-<p>}</p>
-
-<pre><code>
-Per questo progettino, ho voluto provare delle librerie esterne, precisamente il mux del framework gorilla. 
-la riga `r.PathPrefix(&quot;/&quot;).Handler(http.FileServer(http.Dir(&quot;./www/&quot;)))` ci permette di servire i file statici dentro la cartella `./www/`. 
-
-In graph.go Ho inserito le strutture dati del grafo. Ho preferito spezzarle in 3 perchè mi veniva comodo in seguito poter distinguerle, anche se non era necessario. 
-
-le 3 strutture dati sono le seguenti: 
-
-</code></pre>
-
-<p>type Edge struct {
-    Id     string <code>json:&quot;id&quot;</code>
-    Source string <code>json:&quot;source&quot;</code>
-    Target string <code>json:&quot;target&quot;</code>
-}</p>
-
-<p>type Graph struct {
-    Url   string  <code>json:&quot;-&quot;</code>
-    Child []*Node <code>json:&quot;nodes,omitempty&quot;</code>
-    Edges []*Edge <code>json:&quot;edges,omitempty&quot;</code>
-}</p>
-
-<p>type Node struct {
-    Id    string <code>json:&quot;id,omitempty&quot;</code>
-    X     int    <code>json:&quot;x&quot;</code>
-    Y     int    <code>json:&quot;y&quot;</code>
-    Size  int    <code>json:&quot;size&quot;</code>
-    Label string <code>json:&quot;label,omitempty&quot;</code>
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, &quot;Hi there, I love %s!&quot;, r.URL.Path[1:])
 }
-```</p>
+
+func main() {
+    http.HandleFunc(&quot;/&quot;, handler)
+    http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+</code></pre>
+
+<p>Fantastico vero? Ho suddiviso in 3 file il progetto</p>
+
+<ul>
+<li>handlers.go</li>
+<li>graph.go</li>
+<li>main.go</li>
+</ul>
+
+<p>Il primo gestisce le richieste, solo 2, quella per il root path e quindi static files e la richiesta /send che viene usata per ricevere l&rsquo;url e il numero dei nodi e ritornare un json con tutti i link trovati da quell&rsquo;url.</p>
+
+<p>Intanto guardiamo Main.go</p>
+
+<pre><code>package main
+
+import (
+	&quot;github.com/gorilla/mux&quot;
+	&quot;log&quot;
+	&quot;math/rand&quot;
+	&quot;net/http&quot;
+	&quot;time&quot;
+)
+
+func main() {
+
+	r := mux.NewRouter()
+	r.HandleFunc(&quot;/&quot;, Index)
+	r.HandleFunc(&quot;/send&quot;, Send)
+	r.PathPrefix(&quot;/&quot;).Handler(http.FileServer(http.Dir(&quot;./www/&quot;)))
+	http.Handle(&quot;/&quot;, r)
+
+	log.Fatal(http.ListenAndServe(&quot;:8080&quot;, r))
+
+}
+</code></pre>
+
+<p>Per questo progettino, ho voluto provare delle librerie esterne, precisamente il mux del framework gorilla.
+la riga <code>r.PathPrefix(&quot;/&quot;).Handler(http.FileServer(http.Dir(&quot;./www/&quot;)))</code> ci permette di servire i file statici dentro la cartella <code>./www/</code>.</p>
+
+<p>In graph.go Ho inserito le strutture dati del grafo. Ho preferito spezzarle in 3 perchè mi veniva comodo in seguito poter distinguerle, anche se non era necessario.</p>
+
+<p>le 3 strutture dati sono le seguenti:</p>
+
+<pre><code>type Edge struct {
+	Id     string `json:&quot;id&quot;`
+	Source string `json:&quot;source&quot;`
+	Target string `json:&quot;target&quot;`
+}
+
+type Graph struct {
+	Url   string  `json:&quot;-&quot;`
+	Child []*Node `json:&quot;nodes,omitempty&quot;`
+	Edges []*Edge `json:&quot;edges,omitempty&quot;`
+}
+
+type Node struct {
+	Id    string `json:&quot;id,omitempty&quot;`
+	X     int    `json:&quot;x&quot;`
+	Y     int    `json:&quot;y&quot;`
+	Size  int    `json:&quot;size&quot;`
+	Label string `json:&quot;label,omitempty&quot;`
+}
+</code></pre>
 
 <p>quelle che vedete a destra delle variabili, sono tag, permettono di identificare durante il Marshal alcune utili proprietà. Esse mi permettono di Esternalizzare le variabili all&rsquo;interno della struttura dati ma allo stesso tempo avere nel json dopo il marshal tutte le variabili in minuscolo, il tag <code>omitempty</code> come da nome, permette di omettere dal json le variabili dichiarate nil o 0.
 il tag <code>-</code> invece, omette ogni caso dal marshal quella variabile.</p>
 
 <p>Ci sarebbe molto altro da dire riguardo alle implementazioni, ma preferisco lasciare a voi il gusto di leggere il codice e imparare questo fantastico linguaggio.</p>
 
-<p>##Resoconto</p>
+<h2 id="resoconto">Resoconto</h2>
 
 <p>Golang è bellissimo. Ti permette di scrivere codice in modo semplice e allo stesso tempo ordinato, con prestazioni elevatissime (ricordiamo che è un linguaggio compilato) , le librerie standard sono ottime, e ci sono <a href="https://golang.org/doc/cmd">tool</a> di cui non vi ho parlato che vi semplificano di molto la vita.</p>
 
 <p>Buon coding.</p>
 
+            </div>
+        </article>
 
-  
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="https://achille.dev/post/rails-rumble/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="https://achille.dev/post/rails-rumble/">Rails Rumble</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="https://achille.dev/post/torrent-box-with-raspberrypi/">Torrent-box with Raspberry Pi</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://achille.dev/post/torrent-box-with-raspberrypi/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
+        <hr />
 
+        <div class="post-info">
+  			</div>
 
+        
+    </main>
 
-  
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+            </div>
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span></span>
+            <span> <a href="https://achille.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'blackdev1l';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
+        </div>
+    </div>
+</footer>
 
+            
+        </div>
 
-</div>
-
-</div>
-</div>
-<script src="https://achille.dev/js/ui.js"></script>
+        
 
 
 
 
+<script type="text/javascript" src="/bundle.min.4c3fb12a087ceed4a52cb5d57068a9795c7069617a01ca70f788052ad66e1791779e6c72686e1dc0ca13dc03b0203204b6566bb0dd1ee80de2b7ff4d8fe53db2.js" integrity="sha512-TD&#43;xKgh87tSlLLXVcGipeVxwaWF6Acpw94gFKtZuF5F3nmxyaG4dwMoT3AOwIDIEtlZrsN0e6A3it/9Nj&#43;U9sg=="></script>
 
 
-</body>
+
+    </body>
 </html>
-
