@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Cristian Achille</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Jan 2016 17:37:47 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jan 2020 23:13:51 +0100</lastBuildDate>
     
 	<atom:link href="https://achille.dev/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OpenAPI</title>
+      <link>https://achille.dev/post/openapi/</link>
+      <pubDate>Sat, 18 Jan 2020 23:13:51 +0100</pubDate>
+      
+      <guid>https://achille.dev/post/openapi/</guid>
+      <description>Uno dei propositi che mi sono dato per questo 2020 è stato quello di ricominciare a scrivere, scrivere su questo blog, scrivere in generale. Dopo 4 anni di assenza da questa piattaforma ricomincio parlando di un framework che ho introdotto in azienda e che mi sta dando tante soddisfaziono: Parlo della specifica OpenAPI, conosciuta anche come Swagger.
+Cos&amp;rsquo;è Cito direttamente dal sito OpenAPI
+ The OpenAPI Specification: a broadly adopted industry standard for describing modern APIs.</description>
+    </item>
     
     <item>
       <title>Pretty Good Privacy</title>

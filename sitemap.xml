@@ -4,13 +4,18 @@
   
   <url>
     <loc>https://achille.dev/</loc>
-    <lastmod>2016-01-29T17:37:47+00:00</lastmod>
+    <lastmod>2020-01-18T23:13:51+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://achille.dev/post/openapi/</loc>
+    <lastmod>2020-01-18T23:13:51+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://achille.dev/post/</loc>
-    <lastmod>2016-01-29T17:37:47+00:00</lastmod>
+    <lastmod>2020-01-18T23:13:51+01:00</lastmod>
     <priority>0</priority>
   </url>
   
