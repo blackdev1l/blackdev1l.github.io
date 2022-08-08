@@ -1,0 +1,129 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="Salve a tutti, qualche settimana fa ho partecipato all&amp;rsquo;edizione di quest&amp;rsquo;anno della Rails Rumble , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&amp;rsquo;inizio.
+##Cos&amp;rsquo;è:
+Rails Rumble è un hackathon online in cui si forma un team di &amp;ldquo;creativi&amp;rdquo; per finire in un prestabilito lasso di tempo un progetto. Per la Rails Rumble il tema principale è stato l&amp;rsquo;utilizzo del web framework Ruby on Rails , col quale in 48 ore bisognava produrre una web app / sito web."><meta name=keywords content><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://achille.dev/post/rails-rumble/><title>Rails Rumble :: Cristian Achille — blog about programming</title><link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><meta itemprop=name content="Rails Rumble"><meta itemprop=description content="Salve a tutti, qualche settimana fa ho partecipato all&rsquo;edizione di quest&rsquo;anno della Rails Rumble , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&rsquo;inizio.
+##Cos&rsquo;è:
+Rails Rumble è un hackathon online in cui si forma un team di &ldquo;creativi&rdquo; per finire in un prestabilito lasso di tempo un progetto. Per la Rails Rumble il tema principale è stato l&rsquo;utilizzo del web framework Ruby on Rails , col quale in 48 ore bisognava produrre una web app / sito web."><meta itemprop=datePublished content="2014-11-02T22:15:08+00:00"><meta itemprop=dateModified content="2014-11-02T22:15:08+00:00"><meta itemprop=wordCount content="1358"><meta itemprop=image content="https://achille.dev"><meta itemprop=keywords content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://achille.dev"><meta name=twitter:title content="Rails Rumble"><meta name=twitter:description content="Salve a tutti, qualche settimana fa ho partecipato all&rsquo;edizione di quest&rsquo;anno della Rails Rumble , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&rsquo;inizio.
+##Cos&rsquo;è:
+Rails Rumble è un hackathon online in cui si forma un team di &ldquo;creativi&rdquo; per finire in un prestabilito lasso di tempo un progetto. Per la Rails Rumble il tema principale è stato l&rsquo;utilizzo del web framework Ruby on Rails , col quale in 48 ore bisognava produrre una web app / sito web."><meta property="article:published_time" content="2014-11-02 22:15:08 +0000 UTC"></head><body><div class=container><header class=header><span class=header__inner><a href=/ style=text-decoration:none><div class=logo><span class=logo__mark>></span>
+<span class=logo__text>~/cristian</span>
+<span class=logo__cursor></span></div></a><span class=header__right><nav class=menu><ul class=menu__inner><li><a href=/about>About</a></li><li><a href=/post>Blog</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span></span></span></header><div class=content><main class=post><div class=post-info></p></div><article><h2 class=post-title><a href=https://achille.dev/post/rails-rumble/>Rails Rumble</a></h2><div class=post-content><p>Salve a tutti, qualche settimana fa ho partecipato all&rsquo;edizione di quest&rsquo;anno della <a href=http://railsrumble.com/>Rails Rumble</a> , è stato emozionante ed estremamente istruttivo. Ma partiamo dall&rsquo;inizio.</p><p>##Cos&rsquo;è:</p><p>Rails Rumble è un <a href=http://en.wikipedia.org/wiki/Hackathon>hackathon</a> online in cui si forma un team di &ldquo;creativi&rdquo; per finire in un prestabilito lasso di tempo un progetto.
+Per la Rails Rumble il tema principale è stato l&rsquo;utilizzo del web framework <a href=http://rubyonrails.org/>Ruby on Rails</a> , col quale in 48 ore bisognava produrre una web app / sito web. Il limite dei team era di 4 persone.</p><p>ho trovato il team su reddit, precisamente in /r/ruby (o /r/rails?) , 2 americani e un inglese, più o meno tutti sullo stesso livello di abilità, essendo io alle prime armi con Rails all&rsquo;inizio della gara ho deciso di occuparmi del lato backend della web app.</p><p>##Cosa abbiamo fatto:</p><p>###World Spotlight</p><blockquote><p>A new way to explore the world we live in, making it feel just a little bit smaller as you explore countries on a world map stage. Data collected from Youtube, Flickr, Twitter and more is used to present a small snapshot of a countries current moment in digital space.</p></blockquote><p>L&rsquo;idea era quella di dare uno scorcio sul &ldquo;Mondo&rdquo;, offrendo notizie varie su un preciso paese selezionato attraverso una mappa, una cosa molto semplice e d&rsquo;impatto.
+Il mio lavoro era quindi quello di fornire le informazioni sotto forma di dati, queste informazioni erano principalmente 4: Trends di twitter, News locali, informazioni sul meteo e della valuta, video più visitati su youtube nel paese scelto e, in più, una immagine rappresentante il paese come background per la mappa. Per fare ciò avevo bisogno di prendere questi dati dai siti che maggiormente coprivano i corrispettivi task e fare lo <a href=http://en.wikipedia.org/wiki/Web_scraping>scraping</a> delle informazione in base al paese scelto. Siccome nel team non ero l&rsquo;unico a lavorare sul backend scelsi di lavorare sulle immagini in background, le news e twitter.</p><p><strong>NB: I seguenti pezzi di codice sono stati scritti tra le 2 di notte e le 8 del mattino, di fretta e con solo la voglia di avere qualcosa di funzionante, saranno tutte quasi sicuramente soluzioni inefficienti, ma con solo 48h di tempo non potevo permettermi di pensare alla soluzione ottimale e/o ottimizare il codice.</strong></p><p>###Immagine in background
+prima di tutto ho creato una classe base così da poter snellire un pelino il codice, tutte le future classi ereditano da questa classe:</p><pre tabindex=0><code class=language-prettyprint data-lang=prettyprint>class Scraper
+   attr_accessor :url, :location
+
+   def initialize(name)
+   	@location = name
+   end
+
+  def scrapeUrl(url)
+  	doc = Nokogiri::HTML(open(url))
+  	return doc
+  end
+
+  def scrapeObj(url)
+  	doc = Nokogiri::XML(url)
+  	return doc
+  end
+end
+</code></pre><p>Per l&rsquo;immagine in background mi sono affidato a flickr e le sue api, volevo che per ogni paese ci fosse la possibilità di avere un immagine a &ldquo;tema&rdquo;, per fare ciò ho deciso di utilizzare una <a href=http://guides.rubygems.org/what-is-a-gem/>gem</a> estremamente utile per quanto riguarda lo scraping su ruby: <a href=http://www.nokogiri.org>nokogiri</a>.
+nokogiri permette il <a href=http://en.wikipedia.org/wiki/Parsing>parsing</a> delle informazioni di qualsiasi documento html e xml, permettendomi così di usufruire delle api di flickr a pieno. L&rsquo;idea era di prendere una foto attraverso la ricerca con il nome del paese come parola chiave e possibilmente una foto ad alta risoluzione (e possibilmente avere la
+risoluzione originale).</p><pre tabindex=0><code class=language-prettyprint data-lang=prettyprint>class FlickrScraper &lt; Scraper
+	def getImageUrl()
+		string = &#34;&#34;
+		response = open(&#39;https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=apikey&amp;privacy_filter=1&amp;safe_search=1&amp;content_type=1&amp;tags=&#39;+location+&#39;&amp;per_page=100&amp;page=1&amp;extras=original_format&amp;format=rest&#39;).read
+		doc = scrapeObj(response)
+		res = doc.xpath(&#34;//photo&#34;)
+		res.each do |rs|
+			id = rs[:id]
+			puts &#34;id is #{id}&#34;
+			sizeGET = open(&#39;https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&amp;api_key=apikey&amp;&amp;photo_id=&#39;+id+&#39;&amp;format=rest&#39;)
+			docSize = scrapeObj(sizeGET)
+			docSizePath = docSize.xpath(&#34;//size&#34;)
+			puts docSizePath.count
+			docSizePath.each do |dsp|
+				if(dsp[:label] == &#39;Original&#39;)
+					string = dsp[:source]
+					puts &#34;string is #{string}&#34;
+					return string
+				end
+			end
+		end
+		puts &#34;Image not found&#34;
+		return 1
+	end
+end
+</code></pre><p>Questa classe ha un unica funzione che attraverso le api di flickr ottiene una serie di link alle immagini, essa ritorna il link alla prima immagine che trova con il formato originale disponibile.
+essendo di solito il formato originale molto grande, abbiamo pensato di inserire un video di nuvole che si muovono nell&rsquo;homepage mentre si aspetta che l&rsquo;utente scelga il paese, e per non far vedere il caricamente abbiamo inserito un fade effect, cosìcchè da non mostrare gradualmente la foto ma solo dopo averla caricata completamente, stessa cosa da una foto all&rsquo;altra.
+Da notare il doppio ciclo uno dentro l&rsquo;altro che nel worst case porterebbe a un costo di ben O(n^n) , ora non ho studiato molto statistica, ma prima di avere un worst case del genere con il database fotografico di flickr penso che ne passerà di tempo :)</p><p>###News
+Per quanto riguarda le news, considerando che google avesse chiuso l&rsquo;accesso alle sue api per google news, decidemmo di utilizzare un <a href=http://www.faroo.com>motore di ricerca</a> semi sconosciuto, ma che con le sue api immediate e di facile utilizzo ha dato una grande mano nel concludere questo task.</p><pre tabindex=0><code class=language-prettyprint data-lang=prettyprint>class NewsScraper &lt; Scraper
+	def getNews()
+		doc = scrapeUrl(&#34;http://www.faroo.com/api?q=#{location}&amp;start=1&amp;length=5&amp;l=en&amp;src=news&amp;f=xml&amp;key=lBbetYupJAk2n8scJmiKTVDlNrw_&#34;)
+		return doc
+	end
+    
+	def getCapital()
+		doc = scrapeUrl(&#34;http://en.wikipedia.org/wiki/&#34;+location)
+		#print(doc)
+		doc.xpath(&#34;//Infobox&#34;) do |node|
+			print(node)
+		end
+	end
+end
+</code></pre><p>la funzione su cui ho lavorato io è la prima, con un semplice scrape delle api ho ottenuto un oggetto contenente link, titolo, una breve descrizione e persino un immagine raffigurativa per l&rsquo;articolo. Fantastico vero?</p><p>###Twitter
+Non sempre le cose vanno come vorresti, con questo task è stato esattamente così. All&rsquo;inizio si pensava a voler fare una lista dei 10 top trends della nazione selezionata, ma tra infiniti errori e il tempo che inesorabilmente volgeva allo scadere abbiamo optato per una lineare scelta dei top tweets</p><pre tabindex=0><code class=language-prettyprint data-lang=prettyprint>class TwitterScraper &lt; Scraper
+	include Twitter::Autolink
+	attr_accessor :client
+
+	def initialize(name)
+		@location = name
+		@client = Twitter::REST::Client.new do |config|
+			config.consumer_key        = &#34;consumer_key&#34;
+			config.consumer_secret     = &#34;consumer_secret&#34;
+			config.access_token        = &#34;access_token&#34;
+			config.access_token_secret = &#34;access_token_secret&#34;
+		end
+	end
+
+	def parseJson()
+		json = File.read(Rails::root+&#34;lib/assets/trends_available.json&#34;)
+		return JSON.parse(json)
+	end
+
+	def getTrends()
+		puts &#34;location is #{@location} , looking for WOEID&#34;
+		countryCode = &#34;&#34;
+		locationAvailable = parseJson()
+		locationAvailable.each do |loc|
+			if(loc[&#34;name&#34;].capitalize.to_s == @location.to_s)
+				puts &#34;found!&#34;
+				puts loc[&#34;name&#34;]
+				puts loc[&#34;woeid&#34;]
+				countryCode = loc[&#34;woeid&#34;]
+			end
+		end
+		puts &#34;code is #{countryCode}&#34;
+		trends = client.trends(countryCode)
+		trends.each do |tr|
+			puts tr.name
+		end
+		return trends
+	end
+	
+	def getTweets()
+    puts &#34;waiting on twitter&#34;
+    return @client.search(@location, :result_type =&gt; &#34;recent&#34;).take(6).collect
+	end
+
+	def getCountryCode()
+		res = []
+		countries = parseJson()
+		countries.each do |country|
+			res &lt;&lt; country[&#34;countryCode&#34;]
+		end
+		return res
+	end
+end
+</code></pre><p>Classe un pelino più <em>corposa</em> rispetto alle altre, purtroppo il rate limit delle api di twitter è stato un problema non indifferente, che ci ha portati a tardare non poco il completamento di questo task. La funzione getTrends funzionava solo per alcuni paesi, per altri no, non abbiamo indagato molto sul motivo e avevamo deciso di usare la funzione getTweets come &ldquo;toppa&rdquo; se i trends non caricavano.</p><p>##Com&rsquo;è andata:</p><p>dopo aver passato l&rsquo;ultima ora a cercare di sistemare il lato twitter dell&rsquo;app il tempo stava per scadere, ce l&rsquo;avevamo fatta giusto in tempo, mancavano 10 minuti, quando:</p><blockquote><p>[10/20/2014 12:49:37 AM] Cameron C.: fuck<br>[10/20/2014 12:49:40 AM] Cameron C.: I have conflicts<br>[10/20/2014 12:49:41 AM] Cameron C.: hang on</p></blockquote><p><img src=http://www.quickmeme.com/img/02/023019c6c3b84097ee6df4a38f58c16d9da2b8954988f074aad24a6cb4861fd5.jpg alt="Conflicts everywhere"></p><blockquote><p>[10/20/2014 12:53:15 AM] Mike R.: guy you have 2 minutes to fix conflicts or im pushing with old api</p></blockquote><p><img src=http://replygif.net/i/1209.gif alt=sweatyman></p><blockquote><p>[10/20/2014 12:56:54 AM] Mike R.: oh my god<br>[10/20/2014 12:56:57 AM] Mike R.: conflicts out my ass</p></blockquote><p>i minuti scadevano e l&rsquo;unica cosa che potevamo fare era un rollback e lasciare solamente i tweets, senza trends (sigh, tutto lavoro sprecato)</p><blockquote><p>[10/20/2014 12:57:50 AM] Mike R.: im pushing old api</p></blockquote><p>Fu l&rsquo;unica cosa che potemmo fare. il deploy fu fatto alle 23:59 UTC, un minuto in più (o forse meno) e saremmo stati squalificati.
+##Post Deploy</p><p>Il sito sembrava andare bene, tutto funzionava come doveva, eccetto twitter. Il problema non era il codice perchè sia in locale che su box esterne le api funzionavano e il sito mostrava i top 10 tweets. Quindi cosa poteva essere? Probabilmente heroku o il nostro sito era blacklistato da twitter, cosa che ci ha sicuramente penalizzato tantissimo al momento del judging.</p><p>Alla fine non abbiamo vinto, ma è stato estremamente divertente e ho imparato tantissimo, il team è ancora ben saldo e si pensa già al prossimo hackathon online a cui partecipare, mi è piaciuto moltissimo lavorare in gruppo e trovo che loro siano delle persone fantastiche,
+Se vi ho incuriosito un pochino, vi lascio il link al sito che abbiamo creato in 48 ore per la Rails Rumble, un commento col vostro giudizio mi renderebbe ancora più felice!</p><p><a href=http://worldspotlight.r14.railsrumble.com/>http://worldspotlight.r14.railsrumble.com/</a></p></div></article><hr><div class=post-info></div></main></div><footer class=footer></footer></div><script type=text/javascript src=/bundle.min.feebdc8d801e3fb1791305e362b6d11557f029604dd5b3c27e2686bc88787ee90ae1ccf0afe81bd7d959d7617cfe1fc73062aa82b4e1fa830d6941193d2cbddf.js integrity="sha512-/uvcjYAeP7F5EwXjYrbRFVfwKWBN1bPCfiaGvIh4fukK4czwr+gb19lZ12F8/h/HMGKqgrTh+oMNaUEZPSy93w=="></script></body></html>
