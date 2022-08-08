@@ -1,2 +1,2 @@
-blackdev1l.github.io
-====================
+# blog
+powered by hugo

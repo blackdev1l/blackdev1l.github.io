@@ -1,0 +1,69 @@
+baseurl = "https://achille.dev"
+languageCode = "en-us"
+theme = "hello-friend-ng"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Metadata mostly used in document's head
+  description = "Cristian Achille"
+  keywords = "homepage, blog, science, informatics, development, programming"
+  images = [""]
+
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "post"
+  # Default theme "light" or "dark"
+  defaultTheme = "dark"
+
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/_blackdev1l"
+
+  [[params.social]]
+    name = "instagram"
+    url = "https://instagram.com/blackdev1l"
+
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/blackdev1l"
+    
+[languages]
+  [languages.en]
+    title = "Cristian Achille"
+    subtitle = "blog about programming"
+    keywords = ""
+    copyright = ""
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "~/cristian"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+	# You can create a language based menu
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/post"
+
+# And you can even create generic menu
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about"
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "content/posts"
