@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Cristian Achille</title>
-    <link>https://achille.dev/</link>
-    <description>Recent content on Cristian Achille</description>
+    <title>Posts on Cristian Achille</title>
+    <link>https://achille.dev/posts/</link>
+    <description>Recent content in Posts on Cristian Achille</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 Jan 2020 23:13:51 +0100</lastBuildDate><atom:link href="https://achille.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Jan 2020 23:13:51 +0100</lastBuildDate><atom:link href="https://achille.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenAPI</title>
       <link>https://achille.dev/posts/openapi/</link>
@@ -128,15 +128,6 @@ in verità l&amp;rsquo;idea dello script mi è venuto leggendo una lista di libr
 Long story short: un mese e passa di &amp;ldquo;malattia&amp;rdquo;, ogni settimana una diversa, feels bad.
 Spunta fuori ogni tanto qualche persona del passato, incredibile come le persone siano uguali a prima, statica, leggermente diverse ma&amp;hellip; il succo è quello.
 Ho iniziato a lavorare al progettino di Programmazione 2 e dopo uno sprint iniziale sono subito rimasto bloccato su un problema stupido. Probabilmente ho gestito male la divisione iniziale del progetto, probabilmente è meglio ricominciare tutto d&amp;rsquo;accapo.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://achille.dev/about/</link>
-      <pubDate>Thu, 27 Mar 2014 16:19:52 +0100</pubDate>
-      
-      <guid>https://achille.dev/about/</guid>
-      <description>Buona permanenza.</description>
     </item>
     
     <item>
