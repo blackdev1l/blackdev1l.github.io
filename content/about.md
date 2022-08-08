@@ -16,5 +16,5 @@ tags = [
 
 ![Best foto](https://farm2.staticflickr.com/1429/4720170157_65c8fa2c2b_o_d.jpg)
 
-Buona permanenza. 
+Buona permanenza.   
 
