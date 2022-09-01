@@ -61,7 +61,7 @@ params:
     enabled: true # needs to be explicitly set
     title: Cristian Achille
     subtitle: "Software Engineer"
-    imageUrl: "/fox.png"
+    imageUrl: "/images/fox.png"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
@@ -135,4 +135,4 @@ markup:
 
 
 staticDir: 
-  - static/images
+  - static
