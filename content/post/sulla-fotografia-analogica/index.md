@@ -1,11 +1,12 @@
 ---
 title: "Sulla Fotografia Analogica"
 slug: "sulla-fotografia-analogica"
-
+image: cover.bmp
 date: 2025-01-03T16:55:38Z
 hidden: false
 comments: true
-draft: true
+draft: false
+#weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 categories:
     - Photography
 ---
